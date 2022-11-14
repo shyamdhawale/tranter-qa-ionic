@@ -1,0 +1,8 @@
+table {
+    width: 100%;
+    /* text-align:justify; */
+    border: 2px solid rgb(61, 48, 117);
+}
+tr{
+    border: .5px solid rgb(85, 82, 82);
+}

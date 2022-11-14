@@ -2,9 +2,17 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'ionic-react',
+  appName: 'Tranter QA',
   webDir: 'build',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  server: {
+    androidScheme: "http",
+    allowNavigation: [
+      "http://192.168.1.13:3001"
+    ],
+    cleartext: true,
+  }
 };
+
 
 export default config;
