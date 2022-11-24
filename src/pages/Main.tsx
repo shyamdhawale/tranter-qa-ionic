@@ -20,6 +20,7 @@ import {
   IonText,
 } from "@ionic/react";
 import React from "react";
+import TestingLoop from "../components/Checklist/TestingLoop";
 import Header from "../components/UI/Header";
 import Navigation from "../components/UI/Navigation";
 
@@ -57,7 +58,7 @@ const Main: React.FC = () => {
             <IonButton routerLink="/register" className="ion-margin">
               Model-500
             </IonButton>
-            <IonButton routerLink="/register" className="ion-margin">
+            <IonButton routerLink="/checklist/new/1250" className="ion-margin">
               Model-1250
             </IonButton>
             <IonButton routerLink="/register" className="ion-margin">
@@ -72,10 +73,8 @@ const Main: React.FC = () => {
               <IonCardTitle>Inspection</IonCardTitle>
             </IonCardHeader>
 
-            <IonCardContent>
-              Create a new inspection report
-            </IonCardContent>
-            <IonButton routerLink="/inspection/new" className="ion-margin"  >
+            <IonCardContent>Create a new inspection report</IonCardContent>
+            <IonButton routerLink="/inspection/new" className="ion-margin">
               Inspection
             </IonButton>
           </IonCard>

@@ -1,25 +1,8 @@
 import { useRef, useState } from "react";
 import { Route } from "react-router-dom";
-import {
-  IonApp,
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonHeader,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonRow,
-  IonTitle,
-  IonToolbar,
-  setupIonicReact,
-  IonAlert,
-  IonRouterOutlet,
-} from "@ionic/react";
+import { IonApp, setupIonicReact, IonRouterOutlet } from "@ionic/react";
 
 import { IonReactRouter } from "@ionic/react-router";
-
-import { calculatorOutline, refreshOutline } from "ionicons/icons";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -43,6 +26,7 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NewInspection from "./components/inspection/NewInspection";
+import Main1250KVA from "./components/Checklist/Main1250KVA";
 
 setupIonicReact();
 
@@ -90,7 +74,11 @@ const App: React.FC = () => {
           <Route path="/login" component={Login} exact />
           <Route path="/register" component={Register} exact />
           <Route path="/checklist/new/500" component={Register} exact></Route>
-          <Route path="/checklist/new/1250" component={Register} exact></Route>
+          <Route
+            path="/checklist/new/1250"
+            component={Main1250KVA}
+            exact
+          ></Route>
           <Route path="/checklist/new/1500" component={Register} exact></Route>
           <Route path="/checklist/new/2000" component={Register} exact></Route>
           <Route path="/inspection/new" component={NewInspection} exact></Route>

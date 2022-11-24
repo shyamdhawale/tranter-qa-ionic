@@ -2,11 +2,10 @@ import React, { useState, useRef } from "react";
 
 import { IonInput, IonRow } from "@ionic/react";
 
-
-const NewInspectionHeader: React.FC < {
-    onThChangeData: ({}) => void;
-    
-} >  = (props) => {  
+const NewInspectionHeader: React.FC<{
+  // eslint-disable-next-line no-empty-pattern
+  onHeaderDataChange: ({}) => void;
+}> = (props) => {
   const [tbHeader, setTbHeader] = useState({
     clientname: "",
     pono: "",
@@ -19,22 +18,17 @@ const NewInspectionHeader: React.FC < {
   });
 
   const tableChangeHandler = (event: CustomEvent) => {
-    console.log(event.detail.target.value);
-    console.log(event.detail.target.name);
     const value = event.detail.target.value;
     const name = event.detail.target.name;
     setTbHeader({
-        ...tbHeader,
-        [name]: value
+      ...tbHeader,
+      [name]: value,
     });
-    props.onThChangeData({
-        ...tbHeader,
-        [name]: value
+    props.onHeaderDataChange({
+      ...tbHeader,
+      [name]: value,
     });
-    
   };
-
-//   console.log(tbHeader);
 
   return (
     <IonRow className="ion-padding">
