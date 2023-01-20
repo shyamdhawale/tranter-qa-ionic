@@ -40,7 +40,7 @@ const NewChecklistHeader: React.FC<{
     <IonRow className="ion-padding">
       <table>
         <caption>
-          <h3>PRE-DESPATCH INSPECTION CHECKLIST</h3>
+          <h3>header</h3>
         </caption>
         <tbody>
           <tr>

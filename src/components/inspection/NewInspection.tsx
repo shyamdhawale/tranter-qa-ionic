@@ -1,104 +1,178 @@
-import React, { useState } from "react";
-import axios from "axios";
 import {
   IonContent,
-  IonInput,
+  IonGrid,
   IonPage,
+  useIonAlert,
+  useIonViewWillEnter,
   useIonLoading,
   useIonViewWillLeave,
-  IonBadge,
+  IonLoading,
 } from "@ionic/react";
+import React, { useState, useContext } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import { Prompt } from "react-router-dom";
+import axios from "axios";
 
-import { useForm } from "react-hook-form";
-
-import Navigation from "../UI/Navigation";
 import Header from "../UI/Header";
+import Navigation from "../UI/Navigation";
+import InspectionContrl from "./InspectionContrl";
+import InspectionDimensionDetails from "./InspectionDimensionDetails";
+import InspectionHeader from "./InspectionHeader";
+import InspectionMaterial from "./InspectionMaterial";
+import InspectionPaintingDetails from "./InspectionPaintingDetails";
+import "./Inspection.module.css";
+import InspectionHydroTestDetails from "./InspectionHydroTestDetails";
+import AuthContext from "../../store/auth-context";
 
-import "./NewInspection.module.css";
-import NewInspectionHeader from "./NewInspectionHeader";
-import NewInspectionHydroTestDetails from "./NewInspectionHydroTestDetails";
-import NewInspectionMaterial from "./NewInspectionMaterial";
-import NewInspectionDimensionDetails from "./NewInspectionDimensionDetails";
-import NewInspectionPaintingDetails from "./NewInspectionPaintingDetails";
-import ButtonControl from "../UI/ButtonControl";
-import NewInspectionHydroTest from "./NewInspectionHydroTest";
-import Home from "./testRectFrom";
+interface defaultValues {
+  client: String;
+  pono: Number;
+}
 
 const NewInspection: React.FC = () => {
+  const [presentAlert] = useIonAlert();
+  const [successAlert] = useIonAlert();
+  const [errorAlert] = useIonAlert();
+  const [showLoading, setShowLoading] = useState(false);
+
   const history = useHistory();
-  const [headerData, setHeaderData] = useState({});
-  const [materialData, setMaterialData] = useState({});
-  const [dimentionData, setDimentionData] = useState({});
-  const [hydroTestData, setHydroTestData] = useState({});
-  const [paintingData, setPaintingData] = useState({});
   const [present, dismiss] = useIonLoading();
-  const [text, setText] = useState<string>("");
-  useIonViewWillLeave(() => {
-    setText("");
+  const [handlerMessage, setHandlerMessage] = useState("");
+  const [roleMessage, setRoleMessage] = useState("");
+  const [sererror, setSererror] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const methods = useForm<defaultValues>({
+    // defaultValues: {
+    //   client: "tranter",
+    //   pono: 12321,
+    // },
+    mode: "onTouched",
+    reValidateMode: "onChange",
   });
+  useIonViewWillEnter(() => {
+    // console.log("ionViewDidEnter");
+    methods.reset({}, { keepDefaultValues: true });
+  });
+  useIonViewWillLeave(() => {
+    reset();
+  });
+  const {
+    reset,
+    formState: { isValid },
+  } = methods;
 
-  const onSubmitHandler = () => {
-    const postData = {
-      headerData,
-      materialData,
-      dimentionData,
-      hydroTestData,
-      paintingData,
-    };
-    console.log("Posting Data.");
-    console.log(postData);
-    present({
-      message: "Storing data on the server",
-      duration: 3000,
-    });
+  const authCtx = useContext(AuthContext);
+  const isLogin = authCtx.isLoggedIn;
+  // if (!isLogin) {
+  //   return <Redirect to={{ pathname: "/login" }} />;
+  // }
 
-    // axios
-    //   .post("http://192.168.1.13:3001/inspection")
-    //   .then((res) => console.log(res));
+  const onSubmit = (data: any) => {
+    data.preventDefault();
+    let draftData = methods.getValues();
+
+    console.log("draftData", draftData);
+    console.log("isValid", methods.formState.isValid);
+    if (!methods.formState.isValid) {
+      presentAlert({
+        header: "Alert!",
+        subHeader: "Some of the values are not entered",
+        buttons: [
+          {
+            text: "Cancel",
+            role: "cancel",
+            handler: () => {
+              setHandlerMessage("canceled");
+            },
+          },
+          {
+            text: "Save Draft",
+            role: "confirm",
+            handler: () => {
+              setHandlerMessage("Save as Draft");
+              setIsLoading(true);
+              setShowLoading(true);
+              axios
+                .post(
+                  "http://" + process.env.REACT_APP_URL + "/api/inspection",
+                  {
+                    data: draftData,
+                  }
+                )
+                .then((res) => {
+                  console.log(res);
+                  // setSererror("Data Saved Successfully");
+                  setIsLoading(false);
+                  setShowLoading(false);
+                  successAlert({
+                    header: "Info",
+                    subHeader: res.data.message,
+                    buttons: ["OK"],
+                  });
+                  history.push("/");
+                })
+                .catch((err) => {
+                  errorAlert({
+                    header: "Error!",
+                    subHeader: err.message,
+                    message: "Not able to save. please try again",
+                    buttons: ["OK"],
+                  });
+                });
+            },
+          },
+        ],
+        // onDidDismiss: (e: CustomEvent) =>
+        //   setRoleMessage(`Dismissed with role: ${e.detail.role}`),
+      });
+    } else {
+      setTimeout(() => {
+        history.push("/");
+      }, 3100);
+      presentAlert({
+        // header: "Message",
+        subHeader: "first message",
+        // message: "Inspection report stored!",
+        buttons: ["OK"],
+      });
+    }
   };
 
-  const onCancelHandler = () => {
-    history.push("/");
-  };
+  // if (isLoading) {
+  //   return <p>Loading</p>;
+  // }
+
+  // useIonViewWillEnter(() => {
+  //   setShowLoading(true);
+  //   loadProducts().then(() => {
+  //     setShowLoading(false);
+  //   });
+  // });
 
   return (
     <>
       <Navigation />
       <IonPage id="main-content">
         <Header />
-        <IonContent className="ion-padding">
-          {/* <Home />/ */}
-          <form>
-            <NewInspectionHeader onHeaderDataChange={(e) => setHeaderData(e)} />
-            <NewInspectionMaterial
-              onMaterialDataChange={(e) => setMaterialData(e)}
+        <IonContent>
+          <FormProvider {...methods}>
+            <form onSubmit={(e) => onSubmit(e)}>
+              <IonGrid>
+                <InspectionHeader />
+                <InspectionMaterial />
+                <InspectionDimensionDetails />
+                <InspectionHydroTestDetails />
+                <InspectionPaintingDetails />
+                <InspectionContrl />
+              </IonGrid>
+            </form>
+            <IonLoading
+              isOpen={showLoading}
+              onDidDismiss={() => setShowLoading(false)}
+              message={"Loading..."}
+              // duration={5000}
             />
-            <NewInspectionDimensionDetails
-              onDimentionDataChange={(e) => setDimentionData(e)}
-            />
-            {/* <NewInspectionHydroTestDetails
-              onHydroTestDataChange={(e) => setHydroTestData(e)}
-            /> */}
-            <NewInspectionHydroTest
-              onHydroTestDataChange={(e) => setHydroTestData(e)}
-            />
-
-            <NewInspectionPaintingDetails
-              onPaintinDataChange={(e) => setPaintingData(e)}
-            />
-
-            <ButtonControl
-              onSubmit={onSubmitHandler}
-              onCancel={onCancelHandler}
-            />
-
-            <Prompt
-              when={true}
-              message="You have unsaved changes, are you sure you want to leave?"
-            />
-          </form>
+          </FormProvider>
         </IonContent>
       </IonPage>
     </>

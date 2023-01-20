@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   IonContent,
   IonHeader,
@@ -9,8 +9,15 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import AuthContext from "../../store/auth-context";
 
 const Navigation: React.FC = () => {
+  const authctx = useContext(AuthContext);
+
+  const handleLogout = () => {
+    console.log("click on logout");
+    authctx.onLogout();
+  };
   return (
     <IonMenu contentId="main-content">
       <IonHeader>
@@ -26,10 +33,10 @@ const Navigation: React.FC = () => {
           <IonItem button>
             <IonLabel>Checklist</IonLabel>
           </IonItem>
-          <IonItem button>
+          <IonItem button routerLink="/list-inspection">
             <IonLabel>Inspection</IonLabel>
           </IonItem>
-          <IonItem button>
+          <IonItem button onClick={handleLogout}>
             <IonLabel>Log Out</IonLabel>
           </IonItem>
         </IonMenuToggle>

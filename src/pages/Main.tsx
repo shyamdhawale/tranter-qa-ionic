@@ -1,17 +1,7 @@
 import {
   IonButton,
   IonContent,
-  IonItemDivider,
-  IonItemGroup,
-  IonHeader,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonMenu,
-  IonMenuButton,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonCardHeader,
   IonCard,
   IonCardContent,
@@ -19,12 +9,21 @@ import {
   IonCardTitle,
   IonText,
 } from "@ionic/react";
-import React from "react";
-import TestingLoop from "../components/Checklist/TestingLoop";
+import React, { useContext } from "react";
+import { Redirect } from "react-router";
+
 import Header from "../components/UI/Header";
 import Navigation from "../components/UI/Navigation";
+import AuthContext from "../store/auth-context";
 
 const Main: React.FC = () => {
+  const authCtx = useContext(AuthContext);
+  const isLogin = authCtx.isLoggedIn;
+  // console.log(isLogin);
+  if (!isLogin) {
+    return <Redirect to={{ pathname: "/login" }} />;
+  }
+
   return (
     // <IonPage>
     //     <IonHeader>
@@ -41,6 +40,7 @@ const Main: React.FC = () => {
       <Navigation />
       <IonPage id="main-content">
         <Header />
+
         <IonContent className="ion-padding ion-text-center">
           <IonText>
             <h1>QA Reports Dashboard</h1>
@@ -55,13 +55,13 @@ const Main: React.FC = () => {
               Create a new report using model number.
             </IonCardContent>
 
-            <IonButton routerLink="/register" className="ion-margin">
+            <IonButton routerLink="/checklist/new/500" className="ion-margin">
               Model-500
             </IonButton>
             <IonButton routerLink="/checklist/new/1250" className="ion-margin">
               Model-1250
             </IonButton>
-            <IonButton routerLink="/register" className="ion-margin">
+            <IonButton routerLink="/checklist/new/1500" className="ion-margin">
               Model-1500
             </IonButton>
             <IonButton routerLink="/checklist/new/2000" className="ion-margin">

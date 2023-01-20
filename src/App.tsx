@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Route } from "react-router-dom";
 import { IonApp, setupIonicReact, IonRouterOutlet } from "@ionic/react";
 
@@ -25,12 +25,26 @@ import "./theme/variables.css";
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import NewInspection from "./components/inspection/NewInspection";
-import Main1250KVA from "./components/Checklist/Main1250KVA";
 
+import ListInspection from "./pages/ListInspection";
+import NewInspection from "./components/inspection/NewInspection";
+import InspectionDetail from "./pages/InspectionDetail";
+import AuthContext from "./store/auth-context";
+import PdfView from "./components/inspection/Pdf/PdfView";
+import InspectionDetailPdf from "./pages/InspectionDetailPdf";
+import NewModel2000 from "./components/Checklist/Common/Model2000/NewModel2000";
+import NewModel500 from "./components/Checklist/Common/Model500/NewModel500";
+import NewModel1250 from "./components/Checklist/Common/Model1250/NewModel1250";
+import PdfView2000 from "./components/Checklist/Common/Model2000/PDF2000/PdfView2000";
+import NewModel1500 from "./components/Checklist/Common/Model1500/NewModel1500";
+import InspectionEdit from "./pages/InspectionEdit";
+
+// import NewModel500 from "./components/Checklist/Common/Model2000/NewModel500";
 setupIonicReact();
 
 const App: React.FC = () => {
+  const authctx = useContext(AuthContext);
+  const isAuthed = authctx.isLoggedIn;
   const [calculatedBMI, setCalculatedBMI] = useState<number>();
   const [error, setError] = useState<string>();
   const [calcUnit, setCalcUnit] = useState<"mkg" | "ftlbs">("mkg");
@@ -73,15 +87,57 @@ const App: React.FC = () => {
           <Route path="/" component={Main} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/register" component={Register} exact />
-          <Route path="/checklist/new/500" component={Register} exact></Route>
           <Route
-            path="/checklist/new/1250"
-            component={Main1250KVA}
+            path="/checklist/new/500"
+            component={NewModel500}
             exact
           ></Route>
-          <Route path="/checklist/new/1500" component={Register} exact></Route>
-          <Route path="/checklist/new/2000" component={Register} exact></Route>
-          <Route path="/inspection/new" component={NewInspection} exact></Route>
+          <Route
+            path="/checklist/new/1250"
+            component={NewModel1250}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/new/1500"
+            component={NewModel1500}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/new/2000"
+            component={NewModel2000}
+            exact
+          ></Route>
+          <Route
+            path="/inspection/new"
+            exact
+            render={() => {
+              return isAuthed ? <NewInspection /> : <Login />;
+            }}
+          ></Route>
+          <Route
+            path="/inspectiondetail/:id"
+            component={InspectionDetail}
+            exact
+          ></Route>
+          <Route
+            path="/inspectionedit/:id"
+            component={InspectionEdit}
+            exact
+          ></Route>
+          <Route
+            path="/inspectionpdf/:id"
+            component={InspectionDetailPdf}
+            exact
+          ></Route>
+          <Route
+            path="/list-inspection"
+            // component={ListInspection}
+            exact
+            render={() => {
+              return isAuthed ? <ListInspection /> : <Login />;
+            }}
+          ></Route>
+          <Route path="/pdf" component={PdfView2000}></Route>
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
