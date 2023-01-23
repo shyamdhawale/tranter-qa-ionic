@@ -1,11 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Font } from "@react-pdf/renderer";
+import { StyleSheet, Text, View, Image } from "@react-pdf/renderer";
 import ReportHeaderRow from "./ReportHeaderRow";
-
-Font.register({
-  family: "Lato Bold",
-  src: `https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPHA.ttf`,
-});
 
 const styles = StyleSheet.create({
   container: {

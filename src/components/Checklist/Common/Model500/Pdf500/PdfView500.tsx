@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router";
-import { PDFViewer } from "@react-pdf/renderer";
+import { PDFViewer, View } from "@react-pdf/renderer";
 
-import { Page, Document, StyleSheet, Font } from "@react-pdf/renderer";
+import { Page, Document, StyleSheet, Font, Image } from "@react-pdf/renderer";
 import Header500 from "./Header500";
 import Chracteristics500 from "./Chracteristics500";
 import ReportHeaderRow500 from "./ReportHeaderRow500";
+
+import logo from "./tranter.png";
 
 //header
 
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
     // padding: "5%"
     padding: 12,
     fontSize: 10,
-    // fontFamily: "Lato",
+
     fontFamily: "Helvetica",
     // bottom: 30,
     // paddingRight: 12,
@@ -124,27 +126,30 @@ const PdfView500: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios
-      .get(
-        "http://" + process.env.REACT_APP_URL + "/api/inspection/" + lastPath
-      )
-      .then((res) => {
-        // setresultsDetail(res.data.data);
-        setIsLoading(false);
-      })
-      .catch((err) => console.log(err));
+    // axios
+    //   .get(
+    //     "http://" + process.env.REACT_APP_URL + "/api/inspection/" + lastPath
+    //   )
+    //   .then((res) => {
+    //     // setresultsDetail(res.data.data);
+    //     setIsLoading(false);
+    //   })
+    //   .catch((err) => console.log(err));
   }, [lastPath]);
   //   return <></>;
   console.log(resultsDetail);
-  if (isLoading) {
-    return <p>loading</p>;
-  }
+  // if (isLoading) {
+  //   return <p>loading</p>;
+  // }
   return (
     <PDFViewer width="100%" height="800">
       <Document>
         <Page size="A4" style={styles.page} wrap={true}>
-          <Header500 />
+          <View fixed>
+            <Header500 />
+          </View>
           <ReportHeaderRow500 items={resultsDetail} />
+
           <Chracteristics500 results={resultsDetail} />
         </Page>
       </Document>

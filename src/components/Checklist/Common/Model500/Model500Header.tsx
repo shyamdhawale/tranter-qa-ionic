@@ -4,23 +4,23 @@ import React from "react";
 import { useFormContext } from "react-hook-form";
 
 const fields = [
-  {
-    labelone: "Supplier",
-    requiredone: true,
-    typeone: "text",
-    propsone: {
-      name: "supplier",
-      placeholder: "Enter Suppliername Name",
-    },
+  // {
+  //   labelone: "Supplier",
+  //   requiredone: true,
+  //   typeone: "text",
+  //   propsone: {
+  //     name: "supplier",
+  //     placeholder: "Enter Suppliername Name",
+  //   },
 
-    labeltwo: "Customer",
-    requiredtwo: true,
-    typetwo: "text",
-    propstwo: {
-      name: "customer",
-      placeholder: "Enter Customer",
-    },
-  },
+  //   labeltwo: "Customer",
+  //   requiredtwo: true,
+  //   typetwo: "text",
+  //   propstwo: {
+  //     name: "customer",
+  //     placeholder: "Enter Customer",
+  //   },
+  // },
   {
     labelone: "Vendor Code",
     requiredtwo: true,

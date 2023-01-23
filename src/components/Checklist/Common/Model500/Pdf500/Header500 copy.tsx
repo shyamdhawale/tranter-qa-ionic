@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Header1250: React.FC = () => {
+const Header500: React.FC = () => {
   return (
     <View>
       <View style={styles.container}>
@@ -111,4 +111,4 @@ const Header1250: React.FC = () => {
   );
 };
 
-export default Header1250;
+export default Header500;

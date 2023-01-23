@@ -4,10 +4,11 @@ import {
   IonGrid,
   IonInput,
   IonPage,
+  useIonAlert,
 } from "@ionic/react";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useHistory } from "react-router";
 import { FormProvider, useForm } from "react-hook-form";
 import InspectionContrl from "../InspectionContrl";
 
@@ -18,10 +19,22 @@ interface defaultValues {
 
 const InspectionEditMain: React.FC = () => {
   const location = useLocation();
+  const history = useHistory();
+  const [presentAlert] = useIonAlert();
+  const [successAlert] = useIonAlert();
+  const [errorAlert] = useIonAlert();
+
+  const [handlerMessage, setHandlerMessage] = useState("");
+  const [roleMessage, setRoleMessage] = useState("");
+  const [sererror, setSererror] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+
   // const {
   //   register,
   //   formState: { errors },
   // } = useFormContext();
+  const { register, handleSubmit } = useForm();
   const [inspeDetail, setInspeDetail] = useState([
     {
       client: "",
@@ -112,12 +125,113 @@ const InspectionEditMain: React.FC = () => {
       .catch((err) => console.log(err));
   }, [lastPath]);
   console.log(inspeDetail);
+
+  const onSubmit = (data: any) => {
+    data.preventDefault();
+    let draftData = methods.getValues();
+
+    console.log("draftData", draftData);
+    console.log("isValid", methods.formState.isValid);
+    if (!methods.formState.isValid) {
+      presentAlert({
+        header: "Alert!",
+        subHeader: "Some of the values are not entered",
+        buttons: [
+          {
+            text: "Cancel",
+            role: "cancel",
+            handler: () => {
+              setHandlerMessage("canceled");
+            },
+          },
+          {
+            text: "Save Draft",
+            role: "confirm",
+            handler: () => {
+              setHandlerMessage("Save as Draft");
+              setIsLoading(true);
+              setShowLoading(true);
+              axios
+                .post(
+                  "http://" + process.env.REACT_APP_URL + "/api/inspection",
+                  {
+                    data: draftData,
+                  }
+                )
+                .then((res) => {
+                  console.log(res);
+                  // setSererror("Data Saved Successfully");
+                  setIsLoading(false);
+                  setShowLoading(false);
+                  successAlert({
+                    header: "Info",
+                    subHeader: res.data.message,
+                    buttons: ["OK"],
+                  });
+                  history.push("/");
+                })
+                .catch((err) => {
+                  errorAlert({
+                    header: "Error!",
+                    subHeader: err.message,
+                    message: "Not able to save. please try again",
+                    buttons: ["OK"],
+                  });
+                });
+            },
+          },
+        ],
+        // onDidDismiss: (e: CustomEvent) =>
+        //   setRoleMessage(`Dismissed with role: ${e.detail.role}`),
+      });
+    } else {
+      setTimeout(() => {
+        history.push("/");
+      }, 3100);
+      presentAlert({
+        // header: "Message",
+        subHeader: "first message",
+        // message: "Inspection report stored!",
+        buttons: ["OK"],
+      });
+    }
+  };
   return (
     <>
       <FormProvider {...methods}>
         <form>
           <table>
+            <caption className="ion-padding">
+              <h2>
+                <strong>INSPECTION REPORT</strong>{" "}
+              </h2>
+            </caption>
             <tbody>
+              <tr>
+                <th>Client</th>
+                <td>
+                  <IonInput
+                    defaultValue={inspeDetail[0].client}
+                    {...register("clinet")}
+                  ></IonInput>
+                </td>
+                <th>Po No.</th>
+                <td>
+                  <IonInput defaultValue={inspeDetail[0].pono}></IonInput>
+                </td>
+              </tr>
+              <tr>
+                <th>Serial No.</th>
+                <td>
+                  <IonInput
+                    defaultValue={inspeDetail[0].serialnumber}
+                  ></IonInput>
+                </td>
+                <th>Date</th>
+                <td>
+                  <IonInput defaultValue={inspeDetail[0].date}></IonInput>
+                </td>
+              </tr>
               <tr>
                 <th>Abc</th>
                 <td>

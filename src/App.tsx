@@ -38,6 +38,11 @@ import NewModel1250 from "./components/Checklist/Common/Model1250/NewModel1250";
 import PdfView2000 from "./components/Checklist/Common/Model2000/PDF2000/PdfView2000";
 import NewModel1500 from "./components/Checklist/Common/Model1500/NewModel1500";
 import InspectionEdit from "./pages/InspectionEdit";
+import ListChecklist from "./pages/ListChecklist";
+import PdfView500 from "./components/Checklist/Common/Model500/Pdf500/PdfView500";
+import PdfView1250 from "./components/Checklist/Common/Model1250/Pdf1250/PdfView1250";
+import PdfView1500 from "./components/Checklist/Common/Model1500/Pdf1500/PdfView1500";
+import ChecklistPdf500 from "./pages/ChecklistPdf500";
 
 // import NewModel500 from "./components/Checklist/Common/Model2000/NewModel500";
 setupIonicReact();
@@ -130,11 +135,26 @@ const App: React.FC = () => {
             exact
           ></Route>
           <Route
+            path="/checklist500pdf"
+            component={ChecklistPdf500}
+            exact
+          ></Route>
+          <Route path="/checklist1250pdf" component={PdfView1250} exact></Route>
+          <Route path="/checklist1500pdf" component={PdfView1500} exact></Route>
+          <Route path="/checklist2000pdf" component={PdfView2000} exact></Route>
+          <Route
             path="/list-inspection"
             // component={ListInspection}
             exact
             render={() => {
               return isAuthed ? <ListInspection /> : <Login />;
+            }}
+          ></Route>
+          <Route
+            path="/list-checklist"
+            exact
+            render={() => {
+              return isAuthed ? <ListChecklist /> : <Login />;
             }}
           ></Route>
           <Route path="/pdf" component={PdfView2000}></Route>

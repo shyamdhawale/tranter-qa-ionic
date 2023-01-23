@@ -1,15 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Font } from "@react-pdf/renderer";
-
-Font.register({
-  family: "Lato",
-  src: `https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf`,
-});
-
-Font.register({
-  family: "Lato Bold",
-  src: `https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPHA.ttf`,
-});
+import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
 interface props {
   results: {
@@ -151,7 +141,7 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
         <View style={styles.row}>
           <Text style={styles.srno}>1</Text>
           <Text style={styles.characteristics}>Total Height Of Skid</Text>
-          <Text style={styles.dimensionreq}>1410</Text>
+          <Text style={styles.dimensionreq}>2136-2144</Text>
           <Text style={styles.actualresult}>{results.actualresult_1}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
@@ -160,7 +150,7 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
         <View style={styles.row}>
           <Text style={styles.srno}>2</Text>
           <Text style={styles.characteristics}>Overall Width Of Skid</Text>
-          <Text style={styles.dimensionreq}>605</Text>
+          <Text style={styles.dimensionreq}>1081-1089</Text>
           <Text style={styles.actualresult}>{results.actualresult_2}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
@@ -169,7 +159,7 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
         <View style={styles.row}>
           <Text style={styles.srno}>3</Text>
           <Text style={styles.characteristics}>Main Frame Height</Text>
-          <Text style={styles.dimensionreq}>1410</Text>
+          <Text style={styles.dimensionreq}>1581-1589</Text>
           <Text style={styles.actualresult}>{results.actualresult_3}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
@@ -178,7 +168,7 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
         <View style={styles.row}>
           <Text style={styles.srno}>4</Text>
           <Text style={styles.characteristics}>Width Of Frame</Text>
-          <Text style={styles.dimensionreq}>605</Text>
+          <Text style={styles.dimensionreq}>847-853</Text>
           <Text style={styles.actualresult}>{results.actualresult_4}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
@@ -231,7 +221,7 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
           <Text style={styles.characteristics}>
             Distance From Base To Upper Angel(50x6)
           </Text>
-          <Text style={styles.dimensionreq}>1024.5-1033</Text>
+          <Text style={styles.dimensionreq}>1024.5-1032.5</Text>
           <Text style={styles.actualresult}>{results.actualresult_9}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
@@ -273,7 +263,7 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
         <View style={styles.row}>
           <Text style={styles.srno}>13</Text>
           <Text style={styles.characteristics}>Tapping Holes On Drum </Text>
-          <Text style={styles.dimensionreq}>1/4 Inch NPT 10 Places</Text>
+          <Text style={styles.dimensionreq}>1/4 Inch NPT 5 Places</Text>
           <Text style={styles.actualresult}>{results.actualresult_13}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
@@ -284,7 +274,7 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
           <Text style={styles.characteristics}>
             Center To Center Distance Between Adjacent Cap
           </Text>
-          <Text style={styles.dimensionreq}>297-303/397-4003</Text>
+          <Text style={styles.dimensionreq}>297-303/397-403</Text>
           <Text style={styles.actualresult}>{results.actualresult_14}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
@@ -490,6 +480,50 @@ const Chracteristics1500: React.FC<props> = ({ results }) => {
             Distance From Front End To Center Of Make Pipe(38 Od) Of Tank
           </Text>
           <Text style={styles.dimensionreq}>267-273</Text>
+          <Text style={styles.actualresult}>{results.actualresult_32}</Text>
+          <Text style={styles.classification}>M2</Text>
+          <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
+          <Text style={styles.remarks}>Accepted</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.srno}>33</Text>
+          <Text style={styles.characteristics}>
+            Slot Elevation from panel Side at Horizontal angle
+          </Text>
+          <Text style={styles.dimensionreq}>287-293 / 73-77</Text>
+          <Text style={styles.actualresult}>{results.actualresult_32}</Text>
+          <Text style={styles.classification}>M2</Text>
+          <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
+          <Text style={styles.remarks}>Accepted</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.srno}>34</Text>
+          <Text style={styles.characteristics}>
+            Slot Size at Horizontal angle
+          </Text>
+          <Text style={styles.dimensionreq}>8-12 x 18-22</Text>
+          <Text style={styles.actualresult}>{results.actualresult_32}</Text>
+          <Text style={styles.classification}>M2</Text>
+          <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
+          <Text style={styles.remarks}>Accepted</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.srno}>35</Text>
+          <Text style={styles.characteristics}>
+            Distance of Hole on Support Column
+          </Text>
+          <Text style={styles.dimensionreq}>727-733 ±3 / 58-62</Text>
+          <Text style={styles.actualresult}>{results.actualresult_32}</Text>
+          <Text style={styles.classification}>M2</Text>
+          <Text style={styles.equipmenttobeused}>Measuring Tape</Text>
+          <Text style={styles.remarks}>Accepted</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.srno}>36</Text>
+          <Text style={styles.characteristics}>
+            Size & Qty of Holes Hole on Support Column
+          </Text>
+          <Text style={styles.dimensionreq}>Φ14/2</Text>
           <Text style={styles.actualresult}>{results.actualresult_32}</Text>
           <Text style={styles.classification}>M2</Text>
           <Text style={styles.equipmenttobeused}>Measuring Tape</Text>

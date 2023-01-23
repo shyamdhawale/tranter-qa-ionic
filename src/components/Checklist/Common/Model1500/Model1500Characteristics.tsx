@@ -1,6 +1,7 @@
 import React from "react";
 import { IonGrid, IonInput, IonRow } from "@ionic/react";
 import { useFormContext } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 const dimentionData = [
   {
@@ -9,9 +10,13 @@ const dimentionData = [
     type1: "text",
     required1: true,
 
-    label2: "2126-2134",
+    label2: "2136-2144",
     type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 2136,
+    maxvalue: 2144,
 
     propsActualResult: {
       name: "actualresult_1",
@@ -24,9 +29,13 @@ const dimentionData = [
     type1: "text",
     required1: true,
 
-    label2: "1071-1079",
+    label2: "1081-1089",
     type2: "text",
     required2: true,
+
+    isrange: true,
+    minvalue: 1081,
+    maxvalue: 1089,
     propsActualResult: {
       name: "actualresult_2",
       placeholder: "Enter Actual Result",
@@ -39,8 +48,12 @@ const dimentionData = [
     required1: true,
 
     label2: "1581-1589",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 1581,
+    maxvalue: 1589,
 
     propsActualResult: {
       name: "actualresult_3",
@@ -54,8 +67,12 @@ const dimentionData = [
     required1: true,
 
     label2: "847-853",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 847,
+    maxvalue: 853,
 
     propsActualResult: {
       name: "actualresult_4",
@@ -69,8 +86,12 @@ const dimentionData = [
     required1: true,
 
     label2: "1224-1232",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 1224,
+    maxvalue: 1232,
 
     propsActualResult: {
       name: "actualresult_5",
@@ -84,8 +105,12 @@ const dimentionData = [
     required1: true,
 
     label2: "1095-2003",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 1095,
+    maxvalue: 2003,
 
     propsActualResult: {
       name: "actualresult_6",
@@ -99,8 +124,12 @@ const dimentionData = [
     required1: true,
 
     label2: "712-718",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 712,
+    maxvalue: 718,
 
     propsActualResult: {
       name: "actualresult_7",
@@ -113,9 +142,13 @@ const dimentionData = [
     type1: "text",
     required1: true,
 
-    label2: "925-931",
-    type2: "text",
+    label2: "915-921",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 915,
+    maxvalue: 921,
 
     propsActualResult: {
       name: "actualresult_8",
@@ -128,9 +161,13 @@ const dimentionData = [
     type1: "text",
     required1: true,
 
-    label2: "1246-1254",
-    type2: "text",
+    label2: "1024.5-1032.5",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 1024.5,
+    maxvalue: 1032.5,
 
     propsActualResult: {
       name: "actualresult_9",
@@ -147,6 +184,10 @@ const dimentionData = [
     type2: "text",
     required2: true,
 
+    isrange: true,
+    minvalue: 372,
+    maxvalue: 378,
+
     propsActualResult: {
       name: "actualresult_10",
       placeholder: "Enter Actual Result",
@@ -162,6 +203,10 @@ const dimentionData = [
     type2: "text",
     required2: true,
 
+    isrange: true,
+    minvalue: 1846,
+    maxvalue: 1854,
+
     propsActualResult: {
       name: "actualresult_11",
       placeholder: "Enter Actual Result",
@@ -174,8 +219,12 @@ const dimentionData = [
     required1: true,
 
     label2: "155-159",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 155,
+    maxvalue: 159,
 
     propsActualResult: {
       name: "actualresult_12",
@@ -192,6 +241,8 @@ const dimentionData = [
     type2: "text",
     required2: true,
 
+    isrange: false,
+
     propsActualResult: {
       name: "actualresult_13",
       placeholder: "Enter Actual Result",
@@ -203,9 +254,13 @@ const dimentionData = [
     type1: "text",
     required1: true,
 
-    label2: "697-703",
-    type2: "text",
+    label2: "297-303/397-403",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 297,
+    maxvalue: 403,
 
     propsActualResult: {
       name: "actualresult_14",
@@ -222,6 +277,8 @@ const dimentionData = [
     type2: "text",
     required2: true,
 
+    isrange: false,
+
     propsActualResult: {
       name: "actualresult_15",
       placeholder: "Enter Actual Result",
@@ -235,8 +292,10 @@ const dimentionData = [
     required1: true,
 
     label2: "222-228/198-202",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: false,
 
     propsActualResult: {
       name: "actualresult_16",
@@ -253,6 +312,8 @@ const dimentionData = [
     type2: "text",
     required2: true,
 
+    isrange: false,
+
     propsActualResult: {
       name: "actualresult_17",
       placeholder: "Enter Actual Result",
@@ -265,8 +326,12 @@ const dimentionData = [
     required1: true,
 
     label2: "327-333",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 327,
+    maxvalue: 333,
 
     propsActualResult: {
       name: "actualresult_18",
@@ -280,8 +345,10 @@ const dimentionData = [
     required1: true,
 
     label2: "327-333(105+225)",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: false,
 
     propsActualResult: {
       name: "actualresult_19",
@@ -311,8 +378,12 @@ const dimentionData = [
     required1: true,
 
     label2: "114-120",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 114,
+    maxvalue: 120,
 
     propsActualResult: {
       name: "actualresult_20",
@@ -326,8 +397,10 @@ const dimentionData = [
     required1: true,
 
     label2: "779",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: false,
 
     propsActualResult: {
       name: "actualresult_21",
@@ -341,8 +414,10 @@ const dimentionData = [
     required1: true,
 
     label2: "230",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: false,
 
     propsActualResult: {
       name: "actualresult_22",
@@ -359,6 +434,8 @@ const dimentionData = [
     type2: "text",
     required2: true,
 
+    isrange: false,
+
     propsActualResult: {
       name: "actualresult_23",
       placeholder: "Enter Actual Result",
@@ -371,8 +448,12 @@ const dimentionData = [
     required1: true,
 
     label2: "317-323",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 317,
+    maxvalue: 323,
 
     propsActualResult: {
       name: "actualresult_24",
@@ -417,8 +498,12 @@ const dimentionData = [
     required1: true,
 
     label2: "130-136",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: true,
+    minvalue: 130,
+    maxvalue: 136,
 
     propsActualResult: {
       name: "actualresult_26",
@@ -432,7 +517,7 @@ const dimentionData = [
     required1: true,
 
     label2: "303",
-    type2: "text",
+    type2: "number",
     required2: true,
 
     propsActualResult: {
@@ -447,8 +532,10 @@ const dimentionData = [
     required1: true,
 
     label2: "135",
-    type2: "text",
+    type2: "number",
     required2: true,
+
+    isrange: false,
 
     propsActualResult: {
       name: "actualresult_28",
@@ -477,7 +564,7 @@ const dimentionData = [
     required1: true,
 
     label2: "620-626 (320+303)",
-    type2: "text",
+    type2: "number",
     required2: true,
 
     propsActualResult: {
@@ -507,11 +594,75 @@ const dimentionData = [
     required1: true,
 
     label2: "267-273",
+    type2: "number",
+    required2: true,
+
+    isrange: true,
+    minvalue: 267,
+    maxvalue: 273,
+
+    propsActualResult: {
+      name: "actualresult_32",
+      placeholder: "Enter Actual Result",
+    },
+  },
+  {
+    seq: 33,
+    label1: "Slot Elevation from panel Side at Horizontal angle",
+    type1: "text",
+    required1: true,
+
+    label2: "287-293 / 73-77 ",
     type2: "text",
     required2: true,
 
     propsActualResult: {
-      name: "actualresult_32",
+      name: "actualresult_33",
+      placeholder: "Enter Actual Result",
+    },
+  },
+  {
+    seq: 34,
+    label1: "Slot Size at Horizontal angle",
+    type1: "text",
+    required1: true,
+
+    label2: "8-12 x 18-22",
+    type2: "text",
+    required2: true,
+
+    propsActualResult: {
+      name: "actualresult_34",
+      placeholder: "Enter Actual Result",
+    },
+  },
+  {
+    seq: 35,
+    label1: "Distance of Hole on Support Column",
+    type1: "text",
+    required1: true,
+
+    label2: "727-733 ±3 / 58-62",
+    type2: "text",
+    required2: true,
+
+    propsActualResult: {
+      name: "actualresult_35",
+      placeholder: "Enter Actual Result",
+    },
+  },
+  {
+    seq: 36,
+    label1: "Size & Qty of Holes Hole on Support Column",
+    type1: "text",
+    required1: true,
+
+    label2: "Φ14/2",
+    type2: "text",
+    required2: true,
+
+    propsActualResult: {
+      name: "actualresult_36",
       placeholder: "Enter Actual Result",
     },
   },
@@ -552,7 +703,16 @@ const Model1550Characteristics: React.FC = () => {
                       }
                       {...register(fields.propsActualResult.name, {
                         required: fields.required1,
+                        min: fields.isrange ? fields.minvalue : undefined,
+                        max: fields.isrange ? fields.maxvalue : undefined,
                       })}
+                    />
+                    <ErrorMessage
+                      errors={errors}
+                      name={fields.propsActualResult.name}
+                      render={({ message }) => (
+                        <p style={{ color: "red" }}>Value in not in range</p>
+                      )}
                     />
                   </td>
                 </tr>
