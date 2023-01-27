@@ -4,8 +4,8 @@ import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
   mainView: {
-    marginTop: "20px",
-    borderTop: 1,
+    // marginTop: "20px",
+    // borderTop: 1,
   },
   row: {
     flexDirection: "row",
@@ -70,37 +70,37 @@ const ReportHeaderRow1500: React.FC<props> = ({ items }) => {
     <View style={styles.mainView}>
       <View style={styles.row}>
         <Text style={styles.name1}>Supplier</Text>
-        <Text style={styles.value}>{items.supplier}</Text>
+        <Text style={styles.value}>TRANTER INDIA PVT. LTD.</Text>
         <Text style={styles.name2}>Customer</Text>
-        <Text style={styles.value}>{items.customer}</Text>
+        <Text style={styles.value}>CUMMINS INDIA LTD</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>Vendor Code</Text>
-        <Text style={styles.value}>{items.vendorcode}</Text>
+        <Text style={styles.value}>160522</Text>
         <Text style={styles.name2}>Classification</Text>
-        <Text style={styles.value}>{items.classification}</Text>
+        <Text style={styles.value}>1500 KVA</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>Part Name</Text>
-        <Text style={styles.value}>{items.partname}</Text>
+        <Text style={styles.value}>PLATE HEAT EXCHANGER</Text>
         <Text style={styles.name2}>Critical</Text>
-        <Text style={styles.value}>{items.critical}</Text>
+        <Text style={styles.value}>C</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>Part No.</Text>
-        <Text style={styles.value}>{items.partno}</Text>
+        <Text style={styles.value}>4913171</Text>
         <Text style={styles.name2}>Major</Text>
-        <Text style={styles.value}>{items.major}</Text>
+        <Text style={styles.value}>M1</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>MFG.Sr.No.</Text>
         <Text style={styles.value}>{items.mfgsrno}</Text>
         <Text style={styles.name2}>Minor</Text>
-        <Text style={styles.value}>{items.minor}</Text>
+        <Text style={styles.value}>M2</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>DRG.No.</Text>
-        <Text style={styles.value}>{items.drgno}</Text>
+        <Text style={styles.value}>03/CIL/19G4/01 REV. 10</Text>
         <Text style={styles.name2}></Text>
         <Text style={styles.value}> </Text>
       </View>

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderLeftWidth: 1,
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+
     textAlign: "center",
     height: 13,
   },
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     // borderLeftWidth: 1,
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+
     textAlign: "center",
     height: 13,
   },
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     // borderLeftWidth: 1,
     textAlign: "center",
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+
     height: 13,
   },
   heatNo: {
@@ -91,8 +91,6 @@ const MaterialDetails: React.FC<props> = ({ material }) => {
         style={{
           textAlign: "center",
           fontSize: 14,
-          fontFamily: "Lato Bold",
-          fontWeight: "extrabold",
         }}
       >
         <Text>Material Details</Text>

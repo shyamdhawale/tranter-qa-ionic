@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
   titleView: {
     flexDirection: "column",
     textAlign: "center",
-    fontWeight: "extrabold",
-    fontFamily: "Lato Bold",
+
     width: "280px",
     borderRight: 1,
     borderLeft: 1,

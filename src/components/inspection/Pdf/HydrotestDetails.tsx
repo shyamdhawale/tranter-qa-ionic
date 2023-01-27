@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderLeftWidth: 1,
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+
     // textAlign: "center",
     height: 13,
   },
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     // borderLeftWidth: 1,
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+
     // textAlign: "center",
     height: 13,
   },

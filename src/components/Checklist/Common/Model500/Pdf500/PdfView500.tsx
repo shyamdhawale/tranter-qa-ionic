@@ -9,6 +9,11 @@ import Chracteristics500 from "./Chracteristics500";
 import ReportHeaderRow500 from "./ReportHeaderRow500";
 
 import logo from "./tranter.png";
+import ChecklistSign from "../../ChecklistSign";
+import CharactoristicsHeader from "../../CharactoristicsHeader";
+import Remarks500 from "./Remarks500";
+import HeaterImage from "../../HeaterImage";
+import Nozzel500 from "./Nozzel500";
 
 //header
 
@@ -18,7 +23,7 @@ const styles = StyleSheet.create({
     // paddingTop: "2%",
     // padding: "5%"
     padding: 12,
-    fontSize: 10,
+    fontSize: 9,
 
     fontFamily: "Helvetica",
     // bottom: 30,
@@ -143,14 +148,22 @@ const PdfView500: React.FC = () => {
   // }
   return (
     <PDFViewer width="100%" height="800">
-      <Document>
+      <Document
+        producer="Tranter India"
+        creator="Tranter India"
+        author="Tranter India"
+        title="Pre-despatch inspection checklist"
+      >
         <Page size="A4" style={styles.page} wrap={true}>
           <View fixed>
             <Header500 />
+            <ReportHeaderRow500 items={resultsDetail} />
           </View>
-          <ReportHeaderRow500 items={resultsDetail} />
-
           <Chracteristics500 results={resultsDetail} />
+          <Nozzel500 />
+          <Remarks500 />
+          <ChecklistSign />
+          <HeaterImage />
         </Page>
       </Document>
     </PDFViewer>

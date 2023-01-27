@@ -170,7 +170,7 @@ const Header500: React.FC = () => {
     <View>
       <View style={styles.container}>
         <View style={styles.logoColumn}>
-          {/* <Image style={styles.logo} src={logo} /> */}
+          <Image style={styles.logo} src={logo} />
           <Text>PRE-DESPATCH INSPECTION CHECKLIST</Text>
         </View>
         <View style={styles.dataColumn}>

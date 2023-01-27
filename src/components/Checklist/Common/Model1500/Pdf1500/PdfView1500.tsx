@@ -3,7 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router";
 import { PDFViewer } from "@react-pdf/renderer";
 
-import { Page, Document, StyleSheet, Font } from "@react-pdf/renderer";
+import { Page, Document, StyleSheet } from "@react-pdf/renderer";
 import Header1500 from "./Header1500";
 import Chracteristics1500 from "./Characteristics1500";
 import ReportHeaderRow1500 from "./ReportHeaderRow1500";

@@ -76,7 +76,7 @@ const ReportHeaderRow500: React.FC<props> = ({ items }) => {
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>Vendor Code</Text>
-        <Text style={styles.value}>{items.vendorcode}</Text>
+        <Text style={styles.value}>160522</Text>
         <Text style={styles.name2}>Classification</Text>
         <Text style={styles.value}>500 KVA</Text>
       </View>
@@ -84,11 +84,11 @@ const ReportHeaderRow500: React.FC<props> = ({ items }) => {
         <Text style={styles.name1}>Part Name</Text>
         <Text style={styles.value}>PLATE HEAT EXCHANGER</Text>
         <Text style={styles.name2}>Critical</Text>
-        <Text style={styles.value}>{items.critical}</Text>
+        <Text style={styles.value}>C</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>Part No.</Text>
-        <Text style={styles.value}>{items.partno}</Text>
+        <Text style={styles.value}>4913171</Text>
         <Text style={styles.name2}>Major</Text>
         <Text style={styles.value}>M1</Text>
       </View>
@@ -100,7 +100,7 @@ const ReportHeaderRow500: React.FC<props> = ({ items }) => {
       </View>
       <View style={styles.row}>
         <Text style={styles.name1}>DRG.No.</Text>
-        <Text style={styles.value}>{items.drgno}</Text>
+        <Text style={styles.value}>03/CIL/19G4/01 REV. 10</Text>
         <Text style={styles.name2}></Text>
         <Text style={styles.value}> </Text>
       </View>

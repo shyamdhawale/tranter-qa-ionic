@@ -13,6 +13,7 @@ const dimentionData = [
     label2: "1410",
     type2: "number",
     required2: true,
+    dimension: "1410",
 
     isrange: false,
 
@@ -30,6 +31,7 @@ const dimentionData = [
     label2: "605",
     type2: "number",
     required2: true,
+    dimension: "605",
 
     isrange: false,
     propsActualResult: {
@@ -46,6 +48,7 @@ const dimentionData = [
     label2: "1410",
     type2: "number",
     required2: true,
+    dimension: "1410",
 
     isrange: false,
 
@@ -63,6 +66,7 @@ const dimentionData = [
     label2: "605",
     type2: "number",
     required2: true,
+    dimension: "605",
 
     isrange: false,
 
@@ -80,6 +84,7 @@ const dimentionData = [
     label2: "1224-1232",
     type2: "number",
     required2: true,
+    dimension: "1228-+4",
     isrange: true,
     minvalue: 1224,
     maxvalue: 1232,
@@ -98,6 +103,7 @@ const dimentionData = [
     label2: "1095-2003",
     type2: "number",
     required2: true,
+    dimension: "1099-+4",
     isrange: true,
     minvalue: 1095,
     maxvalue: 2003,
@@ -116,6 +122,7 @@ const dimentionData = [
     label2: "712-718",
     type2: "number",
     required2: true,
+    dimension: "715-+3",
 
     isrange: true,
     minvalue: 712,
@@ -135,7 +142,7 @@ const dimentionData = [
     label2: "915-921",
     type2: "number",
     required2: true,
-
+    dimension: "918(-+3)",
     isrange: true,
     minvalue: 915,
     maxvalue: 921,
@@ -154,7 +161,7 @@ const dimentionData = [
     label2: "1024.5-1033",
     type2: "number",
     required2: true,
-
+    dimension: "1028.5-+4",
     isrange: true,
     minvalue: 1024.5,
     maxvalue: 1033,
@@ -173,7 +180,7 @@ const dimentionData = [
     label2: "372-378",
     type2: "number",
     required2: true,
-
+    dimension: "375-+3",
     isrange: true,
     minvalue: 372,
     maxvalue: 378,
@@ -619,7 +626,9 @@ const Model500Characteristics: React.FC = () => {
             <tr>
               <th>Sr. No</th>
               <th>Characteristics</th>
-              <th>Dimention Reqd. (mm)</th>
+              <th>
+                Dimention Reqd. <sup>MM </sup>(mm)
+              </th>
               <th>Actual Results</th>
             </tr>
             {dimentionData.map((fields, index) => {
@@ -627,7 +636,7 @@ const Model500Characteristics: React.FC = () => {
                 <tr key={`form_dimention_${index}`}>
                   <td style={{ maxWidth: "1px" }}>{fields.seq}</td>
                   <td>{fields.label1}</td>
-                  <td>{fields.label2}</td>
+                  <td>{fields.dimension}</td>
                   <td>
                     <IonInput
                       className="custom"

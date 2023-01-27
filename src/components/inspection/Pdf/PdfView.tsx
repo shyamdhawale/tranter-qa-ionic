@@ -189,9 +189,9 @@ const PdfView: React.FC = () => {
   }, [lastPath]);
   //   return <></>;
   console.log(inspeDetail);
-  if (isLoading) {
-    return <p>loading</p>;
-  }
+  // if (isLoading) {
+  //   return <p>loading</p>;
+  // }
   return (
     <PDFViewer width="100%" height="800">
       <Document>
