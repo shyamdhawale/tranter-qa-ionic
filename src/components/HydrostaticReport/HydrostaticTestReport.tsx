@@ -22,16 +22,16 @@ const HydrostaticTestReprt: React.FC = () => {
 
   const lastPath = location.pathname.split("/")[2]; // get only last params
 
-  useEffect(() => {
-    axios
-      .get(
-        "http://" + process.env.REACT_APP_URL + "/api/inspection/" + lastPath
-      )
-      .then((res) => {
-        setHydroDetail([res.data.data]);
-      })
-      .catch((err) => console.log(err));
-  }, [lastPath]);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "http://" + process.env.REACT_APP_URL + "/api/inspection/" + lastPath
+  //     )
+  //     .then((res) => {
+  //       setHydroDetail([res.data.data]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [lastPath]);
   return (
     <>
       <table>
@@ -49,7 +49,7 @@ const HydrostaticTestReprt: React.FC = () => {
               <td>{item.date}</td>
             </tr>
             <tr>
-              <th>S.O.No.</th>
+              <th>S.O. No.</th>
               <td>{item.sono}</td>
               <th>MFG.Sr.No.</th>
               <td>{item.mfgsrno}</td>

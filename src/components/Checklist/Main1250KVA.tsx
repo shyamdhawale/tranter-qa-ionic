@@ -4,7 +4,7 @@ import ButtonControl from "../UI/ButtonControl";
 import NewChecklistHeader from "./Common/NewChecklistHeader";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import NewObservations from "./Common/NewObservations";
+import Observations from "../HydrostaticReport/Observations";
 import NewHydrostaticTestReport from "./Model1250KVA/NewHydrostaticTestReport";
 import Header from "../UI/Header";
 import NewCharacteristics_1250Details from "./Common/NewCharacteristics_1250Details";
@@ -31,10 +31,10 @@ const Main1250KVA: React.FC = () => {
       <IonContent className="ion-padding">
         <NewChecklistHeader onThChangeData={(e) => console.log(e)} />
         <NewHydrostaticTestReport onThChangeData={(e) => console.log(e)} />
-        <NewObservations onThChangeData={(e) => console.log(e)} />
-        <NewCharacteristics_1250Details
+        <Observations />
+        {/* <NewCharacteristics_1250Details
           onCharacteristicsChange={(e) => console.log(e)}
-        />
+        /> */}
         <ButtonControl onSubmit={onSubmitHandler} onCancel={onCancelHandler} />
       </IonContent>
     </IonPage>

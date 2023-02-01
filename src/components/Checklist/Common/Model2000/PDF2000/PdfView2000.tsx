@@ -7,6 +7,7 @@ import { Page, Document, StyleSheet, Font } from "@react-pdf/renderer";
 import Header2000 from "./Header2000";
 import ReportHeaderRow2000 from "./ReportHeaderRow2000";
 import Chracteristics2000 from "./Chracteristics2000";
+import HydrostaticTestReprt from "../../../../HydrostaticReport/HydrostaticTestReport";
 
 //header
 

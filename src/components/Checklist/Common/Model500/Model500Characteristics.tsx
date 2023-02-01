@@ -14,8 +14,10 @@ const dimentionData = [
     type2: "number",
     required2: true,
     dimension: "1410",
-
-    isrange: false,
+    add: "",
+    isrange: true,
+    minvalue: 1410,
+    maxvalue: 1410,
 
     propsActualResult: {
       name: "actualresult_1",
@@ -32,8 +34,11 @@ const dimentionData = [
     type2: "number",
     required2: true,
     dimension: "605",
+    add: "",
+    isrange: true,
+    minvalue: 605,
+    maxvalue: 605,
 
-    isrange: false,
     propsActualResult: {
       name: "actualresult_2",
       placeholder: "Enter Actual Result",
@@ -49,9 +54,10 @@ const dimentionData = [
     type2: "number",
     required2: true,
     dimension: "1410",
-
-    isrange: false,
-
+    add: "",
+    isrange: true,
+    minvalue: 1410,
+    maxvalue: 1410,
     propsActualResult: {
       name: "actualresult_3",
       placeholder: "Enter Actual Result",
@@ -67,8 +73,10 @@ const dimentionData = [
     type2: "number",
     required2: true,
     dimension: "605",
-
-    isrange: false,
+    add: "",
+    isrange: true,
+    minvalue: 605,
+    maxvalue: 605,
 
     propsActualResult: {
       name: "actualresult_4",
@@ -84,7 +92,8 @@ const dimentionData = [
     label2: "1224-1232",
     type2: "number",
     required2: true,
-    dimension: "1228-+4",
+    dimension: "1228",
+    add: "-+4",
     isrange: true,
     minvalue: 1224,
     maxvalue: 1232,
@@ -103,7 +112,8 @@ const dimentionData = [
     label2: "1095-2003",
     type2: "number",
     required2: true,
-    dimension: "1099-+4",
+    dimension: "1099",
+    add: "-+4",
     isrange: true,
     minvalue: 1095,
     maxvalue: 2003,
@@ -122,8 +132,8 @@ const dimentionData = [
     label2: "712-718",
     type2: "number",
     required2: true,
-    dimension: "715-+3",
-
+    dimension: "715",
+    add: "-+3",
     isrange: true,
     minvalue: 712,
     maxvalue: 718,
@@ -142,7 +152,8 @@ const dimentionData = [
     label2: "915-921",
     type2: "number",
     required2: true,
-    dimension: "918(-+3)",
+    dimension: "918",
+    add: "-+3",
     isrange: true,
     minvalue: 915,
     maxvalue: 921,
@@ -161,7 +172,8 @@ const dimentionData = [
     label2: "1024.5-1033",
     type2: "number",
     required2: true,
-    dimension: "1028.5-+4",
+    dimension: "1028.5",
+    add: "-+4",
     isrange: true,
     minvalue: 1024.5,
     maxvalue: 1033,
@@ -180,7 +192,8 @@ const dimentionData = [
     label2: "372-378",
     type2: "number",
     required2: true,
-    dimension: "375-+3",
+    dimension: "375",
+    add: "-+3",
     isrange: true,
     minvalue: 372,
     maxvalue: 378,
@@ -199,7 +212,8 @@ const dimentionData = [
     label2: "1846-1854",
     type2: "number",
     required2: true,
-
+    dimension: "1850",
+    add: "-+4",
     isrange: true,
     minvalue: 1846,
     maxvalue: 1854,
@@ -218,7 +232,8 @@ const dimentionData = [
     label2: "155-159",
     type2: "number",
     required2: true,
-
+    dimension: "157",
+    add: "-+2",
     isrange: true,
     minvalue: 155,
     maxvalue: 159,
@@ -237,6 +252,8 @@ const dimentionData = [
     label2: "1/4 Inch NPT 10 Places",
     type2: "text",
     required2: true,
+    dimension: "1/4 Inch NPT 10 Places",
+    add: "",
 
     propsActualResult: {
       name: "actualresult_13",
@@ -249,9 +266,13 @@ const dimentionData = [
     type1: "text",
     required1: true,
 
-    label2: "297-303/397-4003",
+    label2: "297-303/397-403",
     type2: "number",
     required2: true,
+    dimension: "300",
+    add: "-+3",
+    dimension2: " / 400",
+    add2: "-+",
     isrange: true,
     minvalue: 297,
     maxvalue: 303,
@@ -270,8 +291,14 @@ const dimentionData = [
     label2: "4/1174-1182 X 747-753",
     type2: "text",
     required2: true,
+    dimension: "4/1178",
+    add: "-+4",
+    dimension2: "750",
+    add2: "-+3",
 
-    isrange: false,
+    isrange: true,
+    minvalue: 1174,
+    maxvalue: 1182,
 
     propsActualResult: {
       name: "actualresult_15",
@@ -288,7 +315,10 @@ const dimentionData = [
     label2: "222-228/198-202",
     type2: "number",
     required2: true,
-
+    dimension: "225",
+    add: "-+3",
+    dimension2: " / 200",
+    add2: "-+2",
     isrange: true,
     minvalue: 222,
     maxvalue: 228,
@@ -307,6 +337,8 @@ const dimentionData = [
     label2: "6 No./Dia.14 X 34",
     type2: "text",
     required2: true,
+    dimension: "6 No./Dia.14 X 34",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -323,7 +355,8 @@ const dimentionData = [
     label2: "327-333",
     type2: "number",
     required2: true,
-
+    dimension: "330",
+    add: "-+3",
     isrange: true,
     minvalue: 327,
     maxvalue: 333,
@@ -342,6 +375,10 @@ const dimentionData = [
     label2: "327-333(105+225)",
     type2: "number",
     required2: true,
+    dimension: "330",
+    add: "-+3",
+    dimension2: " (105 + 225)",
+    add2: "",
 
     isrange: true,
     minvalue: 327,
@@ -379,7 +416,8 @@ const dimentionData = [
     label2: "114-120",
     type2: "number",
     required2: true,
-
+    dimension: "117",
+    add: "-+3",
     isrange: true,
     minvalue: 114,
     maxvalue: 120,
@@ -398,8 +436,11 @@ const dimentionData = [
     label2: "779",
     type2: "number",
     required2: true,
-
-    isrange: false,
+    dimension: "779",
+    add: "",
+    isrange: true,
+    minvalue: 779,
+    maxvalue: 779,
 
     propsActualResult: {
       name: "actualresult_21",
@@ -415,8 +456,11 @@ const dimentionData = [
     label2: "230",
     type2: "number",
     required2: true,
-
-    isrange: false,
+    dimension: "230",
+    add: "",
+    isrange: true,
+    minvalue: 230,
+    maxvalue: 230,
 
     propsActualResult: {
       name: "actualresult_22",
@@ -432,7 +476,8 @@ const dimentionData = [
     label2: "OD 100/190.5",
     type2: "text",
     required2: true,
-
+    dimension: "OD 100/190.5",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -449,6 +494,8 @@ const dimentionData = [
     label2: "317-323",
     type2: "number",
     required2: true,
+    dimension: "320",
+    add: "-+3",
     isrange: true,
     minvalue: 317,
     maxvalue: 323,
@@ -467,6 +514,8 @@ const dimentionData = [
     label2: "1/2 Inch NPT 5 Places",
     type2: "text",
     required2: true,
+    dimension: "1/2 Inch NPT 5 Places",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -502,6 +551,8 @@ const dimentionData = [
     type2: "number",
     required2: true,
     isrange: true,
+    dimension: "133",
+    add: "-+3",
     minvalue: 130,
     maxvalue: 136,
 
@@ -519,7 +570,11 @@ const dimentionData = [
     label2: "303",
     type2: "number",
     required2: true,
-    isrange: false,
+    dimension: "303",
+    add: "",
+    isrange: true,
+    minvalue: 303,
+    maxvalue: 303,
 
     propsActualResult: {
       name: "actualresult_27",
@@ -535,6 +590,11 @@ const dimentionData = [
     label2: "135",
     type2: "number",
     required2: true,
+    dimension: "135",
+    add: "",
+    isrange: true,
+    minvalue: 135,
+    maxvalue: 135,
 
     propsActualResult: {
       name: "actualresult_28",
@@ -550,7 +610,8 @@ const dimentionData = [
     label2: "OD 38.1",
     type2: "text",
     required2: true,
-
+    dimension: "OD 38.1",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -567,6 +628,10 @@ const dimentionData = [
     label2: "620-626 (320+303)",
     type2: "number",
     required2: true,
+    dimension: "623",
+    add: "-+3",
+    dimension2: " (320 + 303)",
+    add2: "",
     isrange: true,
     minvalue: 620,
     maxvalue: 626,
@@ -585,7 +650,8 @@ const dimentionData = [
     label2: "1/8 Inch NPT 4 Places",
     type2: "text",
     required2: true,
-
+    dimension: "1/8 Inch NPT 4 Places",
+    add: "",
     isragne: false,
 
     propsActualResult: {
@@ -602,6 +668,8 @@ const dimentionData = [
     label2: "267-273",
     type2: "number",
     required2: true,
+    dimension: "270",
+    add: "-+3",
     isrange: true,
     minvalue: 267,
     maxvalue: 273,
@@ -636,7 +704,10 @@ const Model500Characteristics: React.FC = () => {
                 <tr key={`form_dimention_${index}`}>
                   <td style={{ maxWidth: "1px" }}>{fields.seq}</td>
                   <td>{fields.label1}</td>
-                  <td>{fields.dimension}</td>
+                  <td>
+                    {fields.dimension}
+                    <sup>{fields.add}</sup>
+                  </td>
                   <td>
                     <IonInput
                       className="custom"

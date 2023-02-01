@@ -21,6 +21,11 @@ import Model2000Characteristics from "./Model2000Characteristics";
 
 //import "./Inspection.module.css";
 import AuthContext from "../../../../store/auth-context";
+import HydrostaticTestReprt from "../../../HydrostaticReport/HydrostaticTestReport";
+import TestParameter from "../../../HydrostaticReport/TestParameter";
+import Observations from "../../../HydrostaticReport/Observations";
+import ChecklistPhoto from "../../../Checklistphoto/ChecklistPhoto";
+import ChecklistPhotoMain from "../../../Checklistphoto/ChecklistPhotoMain";
 
 interface defaultValues {
   client: String;
@@ -156,8 +161,12 @@ const NewModel2000: React.FC = () => {
           <FormProvider {...methods}>
             <form onSubmit={(e) => onSubmit(e)}>
               <IonGrid>
-                <Model2000Header />
-                <Model2000Characteristics />
+                {/* <Model2000Header /> */}
+                {/* <Model2000Characteristics /> */}
+                <HydrostaticTestReprt />
+                <TestParameter />
+                <Observations />
+                <ChecklistPhotoMain />
                 <Model2000Control />
               </IonGrid>
             </form>

@@ -43,7 +43,7 @@ const testData = [
     },
     propscold: {
       name: "coldside_3",
-      placeholde: "Enter Cold Side",
+      placeholder: "Enter Cold Side",
     },
   },
   {
@@ -99,7 +99,7 @@ const TestParameter: React.FC = () => {
     <IonRow className="ion-padding">
       <table>
         <caption>
-          <h3>Test Parameters:</h3>
+          <h3>TEST PARAMETERS:</h3>
         </caption>
         <tbody>
           <tr>
@@ -111,7 +111,7 @@ const TestParameter: React.FC = () => {
             const { seq, label, required, type, propshot, propscold } = fileds;
             return (
               <tr key={`form_material_${index}`}>
-                <td>{seq}</td>
+                {/* <td>{seq}</td> */}
                 <td>{label}</td>
                 <td>
                   <IonInput
@@ -120,8 +120,8 @@ const TestParameter: React.FC = () => {
                     type={
                       type === "number"
                         ? "number"
-                        : type === "date"
-                        ? "date"
+                        : type === "number"
+                        ? "number"
                         : "text"
                     }
                     {...register(propshot.name, { required: required })}
@@ -134,8 +134,8 @@ const TestParameter: React.FC = () => {
                     type={
                       type === "number"
                         ? "number"
-                        : type === "date"
-                        ? "date"
+                        : type === "number"
+                        ? "number"
                         : "text"
                     }
                     {...register(propscold.name, { required: required })}

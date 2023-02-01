@@ -1,10 +1,15 @@
 import React, { useState, useRef } from "react";
 
-import { IonInput, IonRow, IonRadio, IonRadioGroup } from "@ionic/react";
+import {
+  IonInput,
+  IonRow,
+  IonRadio,
+  IonRadioGroup,
+  IonCheckbox,
+  IonText,
+} from "@ionic/react";
 
-const NewObservations: React.FC<{
-  onThChangeData: ({}) => void;
-}> = (props) => {
+const Observations: React.FC = () => {
   const [tbObservationDetails, setTbObservationDetails] = useState({
     gaugeidno_1: "",
     guagerange_1: "",
@@ -17,18 +22,20 @@ const NewObservations: React.FC<{
   });
 
   const tableChangeObservationDetails = (event: CustomEvent) => {
-    console.log(event.detail.target.value);
-    console.log(event.detail.target.name);
+    console.log("changeTable clicked");
+    // console.log(event);
+    console.log(event.detail);
+    // console.log(event.detail.target.name);
     const value = event.detail.target.value;
-    const name = event.detail.target.name;
-    setTbObservationDetails({
-      ...tbObservationDetails,
-      [name]: value,
-    });
-    props.onThChangeData({
-      ...tbObservationDetails,
-      [name]: value,
-    });
+    // const name = event.detail.target.name;
+    // setTbObservationDetails({
+    //   ...tbObservationDetails,
+    //   [name]: value,
+    // });
+    // props.onThChangeData({
+    //   ...tbObservationDetails,
+    //   [name]: value,
+    // });
   };
 
   //   console.log(tbObservationDetails);
@@ -37,7 +44,7 @@ const NewObservations: React.FC<{
     <IonRow className="ion-padding">
       <table>
         <caption>
-          <h3>OBSERVATIONS</h3>
+          <h3>OBSERVATIONS:</h3>
         </caption>
         <tbody>
           <tr>
@@ -62,7 +69,7 @@ const NewObservations: React.FC<{
                 name="gaugeidno_1"
                 value={tbObservationDetails.gaugeidno_1}
                 onIonBlur={tableChangeObservationDetails}
-                placeholder="enter guageid no "
+                placeholder="Enter guageid no "
               ></IonInput>
             </td>
             <td>
@@ -71,7 +78,7 @@ const NewObservations: React.FC<{
                 name="guagerange_1"
                 value={tbObservationDetails.guagerange_1}
                 onIonBlur={tableChangeObservationDetails}
-                placeholder="enter guage range"
+                placeholder="Enter guage range"
               ></IonInput>
             </td>
             <td>
@@ -80,7 +87,7 @@ const NewObservations: React.FC<{
                 name="calibrationvalid_1"
                 value={tbObservationDetails.calibrationvalid_1}
                 onIonBlur={tableChangeObservationDetails}
-                placeholder="enter calibration valid"
+                placeholder="Enter calibration valid"
               ></IonInput>
             </td>
             <td>
@@ -137,32 +144,35 @@ const NewObservations: React.FC<{
         </tbody>
       </table>
       <div>
-        <caption>VISUALINSPECTION</caption>
+        <h6>VISUAL INSPECTION: </h6>
         <td>
           <IonRadioGroup onIonChange={tableChangeObservationDetails}>
-            <IonRadio value="NoLeakages"></IonRadio> NO LEAKAGES OBSERVED
+            <IonRadio value="NoLeakages"></IonRadio>NO LEAKAGES OBSERVED
             <br></br>
-            <IonRadio value="Leakages"></IonRadio> LEAKAGES OBSERVED
+            <IonRadio value="Leakages"></IonRadio>LEAKAGES OBSERVED
             <br></br>
-            <IonRadio value="No Visible"></IonRadio> NO VISIBLE PERMANENT
+            <IonRadio value="No Visible"></IonRadio>NO VISIBLE PERMANENT
             DISTORTION OBSERVED
           </IonRadioGroup>
         </td>
       </div>
       <div>
-        <caption>DICISION</caption>
-        <td>
+        <h6>DICISION</h6>
+        <IonRow>
           HYDROSTATIC TEST FOUND :-
           <IonRadioGroup onIonChange={tableChangeObservationDetails}>
-            <IonRadio value="NoLeakages"></IonRadio> SATISFACTORY
-            <IonRadio value="Leakages"></IonRadio> UNSATISFACTORY
-            <IonRadio value="No Visible"></IonRadio> VERIFIED PRESSURE GAUAGE(s)
-            AFTER PRESSURE TEST DISTORTION OBSERVED
+            <IonRadio value="satisfactory"></IonRadio> SATISFACTORY
+            <IonRadio value="unsatisfactory"></IonRadio> UNSATISFACTORY
           </IonRadioGroup>
-        </td>
+        </IonRow>
+
+        <IonRow>
+          <IonCheckbox></IonCheckbox>
+          <IonText>VERIFIED PRESESSURE GAUAGE (S) AFTER PRESSURE TEST.</IonText>
+        </IonRow>
       </div>
     </IonRow>
   );
 };
 
-export default NewObservations;
+export default Observations;

@@ -13,7 +13,8 @@ const dimentionData = [
     label2: "2126-2134",
     type2: "number",
     required2: true,
-
+    dimension: "2130",
+    add: "-+4",
     isrange: true,
     minvalue: 2126,
     maxvalue: 2134,
@@ -32,7 +33,8 @@ const dimentionData = [
     label2: "1071-1079",
     type2: "number",
     required2: true,
-
+    dimension: "1075",
+    add: "-+4",
     isrange: true,
     minvalue: 1071,
     maxvalue: 1079,
@@ -51,7 +53,8 @@ const dimentionData = [
     label2: "1581-1589",
     type2: "number",
     required2: true,
-
+    dimension: "1585",
+    add: "-+4",
     isrange: true,
     minvalue: 1581,
     maxvalue: 1589,
@@ -70,6 +73,8 @@ const dimentionData = [
     label2: "847-853",
     type2: "number",
     required2: true,
+    dimension: "850",
+    add: "-+3",
 
     isrange: true,
     minvalue: 847,
@@ -89,6 +94,8 @@ const dimentionData = [
     label2: "1224-1232",
     type2: "number",
     required2: true,
+    dimension: "1228",
+    add: "-+4",
 
     isrange: true,
     minvalue: 1224,
@@ -108,7 +115,8 @@ const dimentionData = [
     label2: "1095-2003",
     type2: "number",
     required2: true,
-
+    dimension: "1099",
+    add: "-+4",
     isrange: true,
     minvalue: 1095,
     maxvalue: 2003,
@@ -127,7 +135,8 @@ const dimentionData = [
     label2: "712-718",
     type2: "number",
     required2: true,
-
+    dimension: "715",
+    add: "-+3",
     isrange: true,
     minvalue: 712,
     maxvalue: 718,
@@ -146,7 +155,8 @@ const dimentionData = [
     label2: "925-931",
     type2: "number",
     required2: true,
-
+    dimension: "928",
+    add: "-+3",
     isrange: true,
     minvalue: 925,
     maxvalue: 931,
@@ -165,7 +175,8 @@ const dimentionData = [
     label2: "1246-1254",
     type2: "number",
     required2: true,
-
+    dimension: "1250",
+    add: "-+4",
     isrange: true,
     minvalue: 1246,
     maxvalue: 1254,
@@ -184,7 +195,8 @@ const dimentionData = [
     label2: "372-378",
     type2: "number",
     required2: true,
-
+    dimension: "375",
+    add: "-+3",
     isrange: true,
     minvalue: 372,
     maxvalue: 378,
@@ -203,7 +215,8 @@ const dimentionData = [
     label2: "1846-1854",
     type2: "number",
     required2: true,
-
+    dimension: "1850",
+    add: "-+4",
     isrange: true,
     minvalue: 1846,
     maxvalue: 1854,
@@ -222,7 +235,8 @@ const dimentionData = [
     label2: "155-159",
     type2: "number",
     required2: true,
-
+    dimension: "157",
+    add: "-+2",
     isrange: true,
     minvalue: 155,
     maxvalue: 159,
@@ -241,7 +255,8 @@ const dimentionData = [
     label2: "1/4 Inch NPT 5 Places",
     type2: "text",
     required2: true,
-
+    dimension: "1/4 Inch NPT 5 Places",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -258,7 +273,8 @@ const dimentionData = [
     label2: "697-703",
     type2: "number",
     required2: true,
-
+    dimension: "700",
+    add: "-+3",
     isrange: true,
     minvalue: 697,
     maxvalue: 703,
@@ -277,6 +293,8 @@ const dimentionData = [
     label2: "4/1174-1182 X 747-753",
     type2: "text",
     required2: true,
+    dimension: "4/1174-1182 X 747-753",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -294,7 +312,8 @@ const dimentionData = [
     label2: "222-228/198-202",
     type2: "text",
     required2: true,
-
+    dimension: "222-228/198-202",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -311,7 +330,8 @@ const dimentionData = [
     label2: "6 No./Dia.14 X 34",
     type2: "text",
     required2: true,
-
+    dimension: "6 No./Dia.14 X 34",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -328,7 +348,8 @@ const dimentionData = [
     label2: "327-333",
     type2: "number",
     required2: true,
-
+    dimension: "330",
+    add: "-+3",
     isrange: true,
     minvalue: 327,
     maxvalue: 333,
@@ -347,7 +368,10 @@ const dimentionData = [
     label2: "327-333(105+225)",
     type2: "text",
     required2: true,
-
+    dimension: "330",
+    add: "-+3",
+    dimension2: " (105 +225)",
+    add2: "",
     isrange: false,
 
     propsActualResult: {
@@ -382,7 +406,8 @@ const dimentionData = [
     label2: "114-120",
     type2: "number",
     required2: true,
-
+    dimension: "117",
+    add: "-+3",
     isrange: true,
     minvalue: 114,
     maxvalue: 120,
@@ -401,9 +426,11 @@ const dimentionData = [
     label2: "779",
     type2: "text",
     required2: true,
-
-    isrange: false,
-
+    dimension: "779",
+    add: "",
+    isrange: true,
+    minvalue: 779,
+    maxvalue: 779,
     propsActualResult: {
       name: "actualresult_21",
       placeholder: "Enter Actual Result",
@@ -418,8 +445,11 @@ const dimentionData = [
     label2: "230",
     type2: "text",
     required2: true,
-
-    isrange: false,
+    dimension: "230",
+    add: "",
+    isrange: true,
+    minvalue: 230,
+    maxvalue: 230,
 
     propsActualResult: {
       name: "actualresult_22",
@@ -435,7 +465,8 @@ const dimentionData = [
     label2: "OD 100/190.5",
     type2: "text",
     required2: true,
-
+    dimension: "OD 100/190.5",
+    add: "",
     propsActualResult: {
       name: "actualresult_23",
       placeholder: "Enter Actual Result",
@@ -450,7 +481,8 @@ const dimentionData = [
     label2: "317-323",
     type2: "number",
     required2: true,
-
+    dimension: "320",
+    add: "-+3",
     isrange: true,
     minvalue: 317,
     maxvalue: 323,
@@ -469,7 +501,8 @@ const dimentionData = [
     label2: "1/2 Inch NPT 5 Places",
     type2: "text",
     required2: true,
-
+    dimension: "1/2 Inch NPT 5 Places",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -502,6 +535,8 @@ const dimentionData = [
     label2: "130-136",
     type2: "number",
     required2: true,
+    dimension: "133",
+    add: "-+3",
 
     isrange: true,
     minvalue: 130,
@@ -521,9 +556,11 @@ const dimentionData = [
     label2: "303",
     type2: "number",
     required2: true,
-
-    isrange: false,
-
+    dimension: "303",
+    add: "",
+    isrange: true,
+    minvalue: 303,
+    maxvalue: 303,
     propsActualResult: {
       name: "actualresult_27",
       placeholder: "Enter Actual Result",
@@ -538,9 +575,11 @@ const dimentionData = [
     label2: "135",
     type2: "number",
     required2: true,
-
-    isrange: false,
-
+    dimension: "135",
+    add: "",
+    isrange: true,
+    minvalue: 135,
+    maxvalue: 135,
     propsActualResult: {
       name: "actualresult_28",
       placeholder: "Enter Actual Result",
@@ -555,7 +594,8 @@ const dimentionData = [
     label2: "OD 38.1",
     type2: "text",
     required2: true,
-
+    dimension: "OD 38.1",
+    add: "",
     isrange: false,
 
     propsActualResult: {
@@ -572,7 +612,10 @@ const dimentionData = [
     label2: "620-626 (320+303)",
     type2: "number",
     required2: true,
-
+    dimension: "623",
+    add: "-+3",
+    dimension2: " (320 +303",
+    add2: "",
     isrange: true,
     minvalue: 620,
     maxvalue: 626,
@@ -591,7 +634,8 @@ const dimentionData = [
     label2: "1/8 Inch NPT 4 Places",
     type2: "text",
     required2: true,
-
+    dimension: "1/8 Inch NPT 4 Places",
+    add: "",
     propsActualResult: {
       name: "actualresult_31",
       placeholder: "Enter Actual Result",
@@ -606,7 +650,8 @@ const dimentionData = [
     label2: "267-273",
     type2: "number",
     required2: true,
-
+    dimension: "270",
+    add: "-+3",
     isrange: true,
     minvalue: 267,
     maxvalue: 273,
