@@ -34,19 +34,23 @@ import ListInspection from "./pages/ListInspection";
 import NewInspection from "./components/inspection/NewInspection";
 import InspectionDetail from "./pages/InspectionDetail";
 import AuthContext from "./store/auth-context";
-import PdfView from "./components/inspection/Pdf/PdfView";
+
 import InspectionDetailPdf from "./pages/InspectionDetailPdf";
 import NewModel2000 from "./components/Checklist/Common/Model2000/NewModel2000";
 import NewModel500 from "./components/Checklist/Common/Model500/NewModel500";
 import NewModel1250 from "./components/Checklist/Common/Model1250/NewModel1250";
-import PdfView2000 from "./components/Checklist/Common/Model2000/PDF2000/PdfView2000";
+
 import NewModel1500 from "./components/Checklist/Common/Model1500/NewModel1500";
 import InspectionEdit from "./pages/InspectionEdit";
-import ListChecklist from "./pages/ListChecklist";
-import PdfView500 from "./components/Checklist/Common/Model500/Pdf500/PdfView500";
+import ListChecklist from "./pages/ListChecklist/ListChecklist";
+
 import PdfView1250 from "./components/Checklist/Common/Model1250/Pdf1250/PdfView1250";
 import PdfView1500 from "./components/Checklist/Common/Model1500/Pdf1500/PdfView1500";
 import ChecklistPdf500 from "./pages/ChecklistPdf500";
+import ChecklistPdf2000 from "./pages/Checklist2000/ChecklistPdf2000";
+import ChecklistView2000 from "./pages/Checklist2000/ChecklistView2000";
+import ListChecklist2000 from "./pages/ListChecklist/ListChecklist2000";
+import ChecklistEdit2000 from "./pages/Checklist2000/ChecklistEdit2000";
 
 // import NewModel500 from "./components/Checklist/Common/Model2000/NewModel500";
 setupIonicReact();
@@ -54,41 +58,7 @@ setupIonicReact();
 const App: React.FC = () => {
   const authctx = useContext(AuthContext);
   const isAuthed = authctx.isLoggedIn;
-  const [calculatedBMI, setCalculatedBMI] = useState<number>();
-  const [error, setError] = useState<string>();
-  const [calcUnit, setCalcUnit] = useState<"mkg" | "ftlbs">("mkg");
-  const weightInputRef = useRef<HTMLIonInputElement>(null);
-  const heighInputRef = useRef<HTMLIonInputElement>(null);
-  const calculateBMI = () => {
-    // value never be null
-    const enteredWeight = weightInputRef.current!.value;
-    const enteredHeigh = heighInputRef.current!.value;
 
-    if (
-      !enteredHeigh ||
-      !enteredWeight ||
-      enteredHeigh <= 0 ||
-      enteredWeight <= 0
-    ) {
-      setError("Please enter a valid (non-negative) input number.");
-      return;
-    }
-
-    const bmi = +enteredWeight / (+enteredHeigh * +enteredHeigh);
-    console.log(bmi);
-    setCalculatedBMI(bmi);
-  };
-  const resetInut = () => {
-    weightInputRef.current!.value = "";
-    heighInputRef.current!.value = "";
-  };
-
-  const clearError = () => {
-    setError("");
-  };
-  const selectCalsUnitHandler = (selectedValue: "mkg" | "ftlbs") => {
-    setCalcUnit(selectedValue);
-  };
   return (
     <IonApp>
       <IonReactRouter>
@@ -111,11 +81,28 @@ const App: React.FC = () => {
             component={NewModel1500}
             exact
           ></Route>
+          {/* checklist 2000 */}
           <Route
             path="/checklist/new/2000"
             component={NewModel2000}
             exact
           ></Route>
+          <Route
+            path="/checklist/2000/view/:id"
+            component={ChecklistView2000}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/2000/pdf/:id"
+            component={ChecklistPdf2000}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/2000/edit/:id"
+            component={ChecklistEdit2000}
+            exact
+          ></Route>
+          {/* Inspection reports start here */}
           <Route
             path="/inspection/new"
             exact
@@ -138,6 +125,7 @@ const App: React.FC = () => {
             component={InspectionDetailPdf}
             exact
           ></Route>
+          {/* Inspection reports end here */}
           <Route
             path="/checklist500pdf"
             component={ChecklistPdf500}
@@ -145,7 +133,11 @@ const App: React.FC = () => {
           ></Route>
           <Route path="/checklist1250pdf" component={PdfView1250} exact></Route>
           <Route path="/checklist1500pdf" component={PdfView1500} exact></Route>
-          <Route path="/checklist2000pdf" component={PdfView2000} exact></Route>
+          <Route
+            path="/checklist2000pdf"
+            component={ChecklistPdf2000}
+            exact
+          ></Route>
           <Route
             path="/list-inspection"
             // component={ListInspection}
@@ -154,6 +146,7 @@ const App: React.FC = () => {
               return isAuthed ? <ListInspection /> : <Login />;
             }}
           ></Route>
+          {/* List Checklist start here. */}
           <Route
             path="/list-checklist"
             exact
@@ -161,7 +154,14 @@ const App: React.FC = () => {
               return isAuthed ? <ListChecklist /> : <Login />;
             }}
           ></Route>
-          <Route path="/pdf" component={PdfView2000}></Route>
+          <Route
+            path="/list-checklist/2000"
+            exact
+            render={() => {
+              return isAuthed ? <ListChecklist2000 /> : <Login />;
+            }}
+          ></Route>
+          {/* List checklist end here */}
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

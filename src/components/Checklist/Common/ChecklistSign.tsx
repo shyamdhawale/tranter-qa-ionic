@@ -50,11 +50,7 @@ const ChecklistSign: React.FC = () => (
     <Text style={styles.disclaimer}>
       This is a system generated receipt and does not require signature.
     </Text>
-    <View style={styles.culumn}>
-      {/* <CheckboxSelected /> */}
-      {/* <CheckboxCross /> */}
-      {/* <Text>NO LEAKAGES OBSERVERD</Text> */}
-    </View>
+    <View style={styles.culumn}></View>
   </View>
 );
 

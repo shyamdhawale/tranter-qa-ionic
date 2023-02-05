@@ -31,7 +31,7 @@ const Navigation: React.FC = () => {
             <IonLabel>Home</IonLabel>
           </IonItem>
           <IonItem button routerLink="/list-checklist">
-            <IonLabel>Checklist</IonLabel>
+            <IonLabel>Checklists</IonLabel>
           </IonItem>
           <IonItem button routerLink="/list-inspection">
             <IonLabel>Inspection</IonLabel>

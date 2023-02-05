@@ -19,13 +19,14 @@ import React, { useState, useEffect } from "react";
 
 import { usePhotoGallery } from "../../hook/usePhotoGallery";
 
-const ChecklistPhoto: React.FC<{ uploadUrl: string; imageRes: string }> = (
+const ChecklistPhotoTwo: React.FC<{ reportNo: any; modelNo: String }> = (
   props
 ) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
+
   const { photos, takePhoto } = usePhotoGallery();
   const [isUpload, setIsUpload] = useState(true);
   const [image, setImage] = useState(false);
@@ -33,6 +34,8 @@ const ChecklistPhoto: React.FC<{ uploadUrl: string; imageRes: string }> = (
   const [presentAlert] = useIonAlert();
   const [isuploadDone, setIsuploadDone] = useState(false);
   const [imageRes, setImageRes] = useState("");
+  const [photoValue, setPhotoValue] = useState(false);
+  const [imageFilename, setimageFilename] = useState(""); // setfilename
 
   useEffect(() => {
     if (photos.length) {
@@ -40,44 +43,50 @@ const ChecklistPhoto: React.FC<{ uploadUrl: string; imageRes: string }> = (
     }
   }, [photos]);
 
-  console.log(props.uploadUrl);
-
   const uploadImage = () => {
     const formData = new FormData();
     const fileBlob = photos[0].fileblob;
-    formData.append("File", fileBlob, "frontview.jpeg");
-    setImageRes("blablac");
+    formData.append("File", fileBlob, "phototwo.jpeg");
+    // setImageRes("blablac");
 
-    // setShowLoading(true);
-    // axios
-    //   .post("http://192.168.1.20:3001/api/checklistphoto", formData)
-    //   .then((res) => {
-    //     props.imageRes("abbcsd");
-    //     console.log(res);
-    //     if (res.data.message === "success") {
-    //       setIsUpload(true);
-    //       setShowLoading(false);
-    //       setIsuploadDone(true);
-    //       setImage(false);
-    //       presentAlert({
-    //         header: "Alert",
-    //         message: "Successfully uploaded photo!",
-    //         buttons: ["OK"],
-    //       });
-    //     }
-    //     console.log("file upload", res.data);
-    //   })
-    //   .catch((err) => {
-    //     setShowLoading(false);
-    //     presentAlert({
-    //       header: "Error!",
-    //       message: "There was error to upload photo!",
-    //       buttons: ["OK"],
-    //     });
-    //   });
+    setShowLoading(true);
+    axios
+      .post(
+        "http://" +
+          process.env.REACT_APP_URL +
+          "/api/checklistphoto/?photo=two&reportNo=" +
+          props.reportNo +
+          "&modelNo=" +
+          props.modelNo,
+        formData
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.data.message === "success") {
+          setIsUpload(true);
+          setShowLoading(false);
+          setIsuploadDone(true);
+          setImage(false);
+          setImageRes(res.data.imageid);
+          setimageFilename(res.data.filename);
+          presentAlert({
+            header: "Alert",
+            message: "Successfully uploaded photo!",
+            buttons: ["OK"],
+          });
+          setPhotoValue(true);
+        }
+        console.log("file upload", res.data);
+      })
+      .catch((err) => {
+        setShowLoading(false);
+        presentAlert({
+          header: "Error!",
+          message: "There was error to upload photo!",
+          buttons: ["OK"],
+        });
+      });
   };
-
-  console.log(imageRes);
 
   return (
     <IonGrid className="photo">
@@ -130,9 +139,22 @@ const ChecklistPhoto: React.FC<{ uploadUrl: string; imageRes: string }> = (
           <IonIcon icon={camera}></IonIcon>
         </IonButton>
       </IonRow>
-      <IonInput {...register("sidephotoChecklist")} value={imageRes} />
+      {photoValue && (
+        <>
+          <input
+            type="hidden"
+            {...register("equipmentphototwo_id")}
+            value={imageRes}
+          />
+          <input
+            type="hidden"
+            {...register("equipmentphotofilename_two")}
+            value={imageFilename}
+          />
+        </>
+      )}
     </IonGrid>
   );
 };
 
-export default ChecklistPhoto;
+export default ChecklistPhotoTwo;

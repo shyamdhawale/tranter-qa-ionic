@@ -43,9 +43,8 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderLeftWidth: 1,
     padding: "1 5 1 5",
-
     textAlign: "center",
-    height: 13,
+    height: "100%",
   },
   desciption: {
     width: "45%",
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     // height: 13,
-    minHeight: 13,
+    height: "100%",
     fontFamily: "Helvetica-Bold",
   },
   dimentionReqd: {
@@ -69,15 +68,14 @@ const styles = StyleSheet.create({
     // borderLeftWidth: 1,
     textAlign: "center",
     padding: "1 5 1 5",
-
-    height: 13,
+    height: "100%",
   },
   dimentionObserved: {
     width: "30%",
     borderRightWidth: 1,
     fontSize: "10px",
     padding: "1 5 1 5",
-    height: 13,
+    height: "100%",
     textAlign: "center",
   },
 });

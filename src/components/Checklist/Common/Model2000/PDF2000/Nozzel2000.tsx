@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
+import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
-import CharactoristicsHeader from "../../CharactoristicsHeader";
-import ChecklistSubTitle from "../../ChecklistSubTitle";
+interface props {
+  results: {};
+}
 
 const styles = StyleSheet.create({
   mainView: {
@@ -12,6 +13,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
+    fontSize: "8px",
   },
   row: {
     flexDirection: "row",
@@ -19,6 +21,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
   },
+
   nozzelschedule: {
     flexDirection: "row",
     borderWidth: 1,
@@ -28,7 +31,22 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica-Bold",
     textAlign: "center",
   },
+  serialnumber: {
+    width: "5%",
+    height: "100%",
+    alignItems: "center",
+    textAlign: "center",
+    borderWidth: 1,
+    padding: 5,
+  },
   nozzelno: {
+    width: "25%",
+    borderRightWidth: 1,
+    // borderLeftWidth: 1,
+    padding: 5,
+    height: "100%",
+  },
+  nozzelnospan: {
     width: "25%",
     borderRightWidth: 1,
     // borderLeftWidth: 1,
@@ -69,11 +87,11 @@ const styles = StyleSheet.create({
     width: "95%",
   },
 });
-const Nozzel2000: React.FC = () => (
+const Nozzel2000: React.FC<props> = ({ results }) => (
   <View style={{ paddingTop: "10px" }}>
     <View style={styles.container}>
-      <View style={styles.nozzelschedule}>
-        <Text>NOZZEL SCHEDULE</Text>
+      <View style={styles.serialnumber}>
+        <Text>30</Text>
       </View>
 
       <View style={styles.sidecontainer}>

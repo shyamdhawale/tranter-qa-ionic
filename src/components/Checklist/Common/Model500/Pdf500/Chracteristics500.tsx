@@ -1,8 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import Header500 from "./Header500";
 
-import logo1 from "./tranter1.jpg";
 import CharactoristicsHeader from "../../CharactoristicsHeader";
 import ChecklistSubTitle from "../../ChecklistSubTitle";
 

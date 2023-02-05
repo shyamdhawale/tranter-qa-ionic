@@ -18,10 +18,10 @@ import {
 import { searchCircle } from "ionicons/icons";
 import { Redirect } from "react-router";
 
-import Header from "../components/UI/Header";
-import Navigation from "../components/UI/Navigation";
-import SeachBarInspection from "../components/inspection/SeachBarInspection";
-import AuthContext from "../store/auth-context";
+import Navigation from "../../components/UI/Navigation";
+import SeachBarInspection from "../../components/inspection/SeachBarInspection";
+import AuthContext from "../../store/auth-context";
+import Header from "../../components/UI/Header";
 
 const ListChecklist = () => {
   return (
@@ -34,17 +34,17 @@ const ListChecklist = () => {
             <h1>Checklist Reports</h1>
           </IonText>
           <IonCardContent>View Pdf reports.</IonCardContent>
-          <IonButton routerLink="/checklist500pdf" className="ion-margin">
-            Model-500
+          <IonButton routerLink="/list-checklist/500" className="ion-margin">
+            List Model-500
           </IonButton>
-          <IonButton routerLink="/checklist1250pdf" className="ion-margin">
-            Model-1250
+          <IonButton routerLink="/list-checklist/1250" className="ion-margin">
+            List Model-1250
           </IonButton>
-          <IonButton routerLink="/checklist1500pdf" className="ion-margin">
-            Model-1500
+          <IonButton routerLink="/list-checklist/1500" className="ion-margin">
+            List Model-1500
           </IonButton>
-          <IonButton routerLink="/checklist2900pdf" className="ion-margin">
-            Model-2000
+          <IonButton routerLink="/list-checklist/2000" className="ion-margin">
+            List Model-2000
           </IonButton>
         </IonContent>
       </IonPage>

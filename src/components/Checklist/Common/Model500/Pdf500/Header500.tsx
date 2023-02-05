@@ -108,6 +108,10 @@ const styles = StyleSheet.create({
     padding: "2 5 1 5",
     fontFamily: "Helvetica-Bold",
   },
+  title: {
+    fontSize: "13px",
+    marginTop: "2px",
+  },
   dataColumn: {
     flexDirection: "column",
     // alignSelf: 'flex-start',
@@ -171,7 +175,7 @@ const Header500: React.FC = () => {
       <View style={styles.container}>
         <View style={styles.logoColumn}>
           <Image style={styles.logo} src={logo} />
-          <Text>PRE-DESPATCH INSPECTION CHECKLIST</Text>
+          <Text style={styles.title}>PRE-DESPATCH INSPECTION CHECKLIST</Text>
         </View>
         <View style={styles.dataColumn}>
           <View style={styles.dataRow}>

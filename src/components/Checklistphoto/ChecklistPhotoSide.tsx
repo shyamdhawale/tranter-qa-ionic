@@ -7,10 +7,11 @@ import {
   IonCol,
   IonImg,
   IonSpinner,
-  useIonLoading,
+  IonInput,
   IonLoading,
   useIonAlert,
 } from "@ionic/react";
+import { useFormContext } from "react-hook-form";
 
 import axios from "axios";
 import { camera, trash, close, checkmark } from "ionicons/icons";
@@ -18,13 +19,23 @@ import React, { useState, useEffect } from "react";
 
 import { usePhotoGallery } from "../../hook/usePhotoGallery";
 
-const ChecklistPhoto: React.FC = () => {
+const ChecklistPhotoSide: React.FC<{ reportNo: any; modelNo: String }> = (
+  props
+) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   const { photos, takePhoto } = usePhotoGallery();
   const [isUpload, setIsUpload] = useState(true);
   const [image, setImage] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [presentAlert] = useIonAlert();
   const [isuploadDone, setIsuploadDone] = useState(false);
+  const [imageRes, setImageRes] = useState("");
+  const [photoValue, setPhotoValue] = useState(false);
+  const [imageFilename, setimageFilename] = useState(""); // setfilename
 
   useEffect(() => {
     if (photos.length) {
@@ -32,15 +43,23 @@ const ChecklistPhoto: React.FC = () => {
     }
   }, [photos]);
 
-  console.log(image);
-
   const uploadImage = () => {
     const formData = new FormData();
     const fileBlob = photos[0].fileblob;
-    formData.append("File", fileBlob, "frontview.jpeg");
+    formData.append("File", fileBlob, "sideview.jpeg");
+    // setImageRes("blablac");
+
     setShowLoading(true);
     axios
-      .post("http://192.168.1.20:3001/api/checklistphoto", formData)
+      .post(
+        "http://" +
+          process.env.REACT_APP_URL +
+          "/api/checklistphoto/?photo=photoside&reportNo=" +
+          props.reportNo +
+          "&modelNo=" +
+          props.modelNo,
+        formData
+      )
       .then((res) => {
         console.log(res);
         if (res.data.message === "success") {
@@ -48,11 +67,14 @@ const ChecklistPhoto: React.FC = () => {
           setShowLoading(false);
           setIsuploadDone(true);
           setImage(false);
+          setImageRes(res.data.imageid);
+          setimageFilename(res.data.filename);
           presentAlert({
             header: "Alert",
             message: "Successfully uploaded photo!",
             buttons: ["OK"],
           });
+          setPhotoValue(true);
         }
         console.log("file upload", res.data);
       })
@@ -99,6 +121,7 @@ const ChecklistPhoto: React.FC = () => {
             </IonButton>
           </IonRow>
         )}
+
         <IonLoading
           isOpen={showLoading}
           onDidDismiss={() => setShowLoading(false)}
@@ -116,8 +139,22 @@ const ChecklistPhoto: React.FC = () => {
           <IonIcon icon={camera}></IonIcon>
         </IonButton>
       </IonRow>
+      {photoValue && (
+        <>
+          <input
+            type="hidden"
+            {...register("sideviewphotoid")}
+            value={imageRes}
+          />
+          <input
+            type="hidden"
+            {...register("sideviewphotofilename")}
+            value={imageFilename}
+          />
+        </>
+      )}
     </IonGrid>
   );
 };
 
-export default ChecklistPhoto;
+export default ChecklistPhotoSide;
