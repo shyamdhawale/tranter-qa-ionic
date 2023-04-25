@@ -4,23 +4,19 @@ import {
   IonButton,
   IonContent,
   IonPage,
-  IonCardHeader,
-  IonCard,
   IonCardContent,
-  IonCardSubtitle,
-  IonCardTitle,
   IonText,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonSearchbar,
+  // IonItem,
+  // IonLabel,
+  // IonList,
+  // IonSearchbar,
 } from "@ionic/react";
-import { searchCircle } from "ionicons/icons";
-import { Redirect } from "react-router";
+// import { searchCircle } from "ionicons/icons";
+// import { Redirect } from "react-router";
 
 import Navigation from "../../components/UI/Navigation";
-import SeachBarInspection from "../../components/inspection/SeachBarInspection";
-import AuthContext from "../../store/auth-context";
+// import SeachBarInspection from "../../components/inspection/SeachBarInspection";
+// import AuthContext from "../../store/auth-context";
 import Header from "../../components/UI/Header";
 
 const ListChecklist = () => {

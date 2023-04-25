@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from "react";
-const AuthContext = React.createContext({
-  isLoggedIn: false,
-  onLogout: () => {},
-  onLogin: (username, password) => {}, // dummy email and password here.
-});
+import axios from "axios";
+import { createContext, useState } from "react";
+import jwt_decode from "jwt-decode";
+import { useHistory, useLocation } from "react-router-dom";
 
-export const AuthContextProvider = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const AuthContext = createContext();
 
-  useEffect(() => {
-    const storedLoginInformation = localStorage.getItem("isLoggedIn");
-    if (storedLoginInformation === "1") {
-      setIsLoggedIn(true);
-      console.log("useEffect Run", storedLoginInformation);
+export const AuthContextProvider = ({ children }) => {
+  // console.log(historya);
+
+  const [user, setUser] = useState(() => {
+    if (localStorage.getItem("tokens")) {
+      let tokens = JSON.parse(localStorage.getItem("tokens"));
+      return jwt_decode(tokens.access_token);
     }
-  }, []);
+    return null;
+  });
 
-  const logoutHandler = () => {
-    localStorage.removeItem("isLoggedIn");
-    setIsLoggedIn(false);
+  const login = async (payload) => {
+    const apiResponse = await axios.post(
+      "http://localhost:3001/api/login",
+      payload
+    );
+    localStorage.setItem("tokens", JSON.stringify(apiResponse.data));
+    setUser(jwt_decode(apiResponse.data.access_token));
+    return true;
+    // historya.push("/")
   };
-  const loginHandler = () => {
-    localStorage.setItem("isLoggedIn", "1");
-    setIsLoggedIn(true);
+  const logout = async () => {
+    // invoke the logout API call, for our NestJS API no logout API
+
+    localStorage.removeItem("tokens");
+    setUser(null);
+    // console.log(historya);
+    // history.push("/auth/login");
   };
   return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn: isLoggedIn,
-        onLogin: loginHandler,
-        onLogout: logoutHandler,
-      }}
-    >
-      {props.children}
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
     </AuthContext.Provider>
   );
 };
-
 export default AuthContext;

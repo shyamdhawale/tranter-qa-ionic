@@ -131,7 +131,7 @@ const ChecklistPhotoTwo: React.FC<{ reportNo: any; modelNo: String }> = (
       </IonGrid>
       <IonRow>
         <IonButton
-          onClick={() => {
+           onClick={() => {
             takePhoto();
             setIsUpload(false);
           }}
@@ -151,6 +151,7 @@ const ChecklistPhotoTwo: React.FC<{ reportNo: any; modelNo: String }> = (
             {...register("equipmentphotofilename_two")}
             value={imageFilename}
           />
+          
         </>
       )}
     </IonGrid>

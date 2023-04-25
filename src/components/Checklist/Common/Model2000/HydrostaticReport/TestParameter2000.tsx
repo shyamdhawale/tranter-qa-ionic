@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IonInput, IonRow } from "@ionic/react";
+import { IonInput, IonRow, IonSelect, IonSelectOption } from "@ionic/react";
 import { useFormContext } from "react-hook-form";
 
 const testData = [
@@ -9,13 +9,16 @@ const testData = [
     label: "Design Pressure",
     type: "text",
     required: true,
+
     propshot: {
       name: "hyd_test_hotside_1",
       placeholder: "Enter Hot Side ",
+      defaultValue: "12 bar(g)",
     },
     propscold: {
       name: "hyd_test_coldside_1",
       placeholder: "Enter Cold Side",
+      defaultValue: "12 bar(g)",
     },
   },
   {
@@ -26,10 +29,12 @@ const testData = [
     propshot: {
       name: "hyd_test_hotside_2",
       placeholder: "Enter Hot Side ",
+      defaultValue: "16 bar(g)",
     },
     propscold: {
       name: "hyd_test_coldside_2",
       placeholder: "Enter Cold Side",
+      defaultValue: "16 bar(g)",
     },
   },
   {
@@ -40,10 +45,12 @@ const testData = [
     propshot: {
       name: "hyd_test_hotside_3",
       placeholder: "Enter Hot Side ",
+      defaultValue: "WATER",
     },
     propscold: {
       name: "hyd_test_coldside_3",
       placeholder: "Enter Cold Side",
+      defaultValue: "WATER",
     },
   },
   {
@@ -54,10 +61,12 @@ const testData = [
     propshot: {
       name: "hyd_test_hotside_4",
       placeholder: "Enter Hot Side ",
+      defaultValue: "28-30°C",
     },
     propscold: {
       name: "hyd_test_coldside_4",
       placeholder: "Enter Cold Side",
+      defaultValue: "28-30°C",
     },
   },
   {
@@ -68,10 +77,12 @@ const testData = [
     propshot: {
       name: "hyd_test_hotside_5",
       placeholder: "Enter Hot Side ",
+      defaultValue: "30 MINUTES",
     },
     propscold: {
       name: "hyd_test_coldside_5",
       placeholder: "Enter Cold Side",
+      defaultValue: "30 MINUTES",
     },
   },
   {
@@ -82,10 +93,12 @@ const testData = [
     propshot: {
       name: "hyd_test_hotside_6",
       placeholder: "Enter Hot Side ",
+      defaultValue: "VERTICAL",
     },
     propscold: {
       name: "hyd_test_coldside_6",
       placeholder: "Enter Cold Side",
+      defaultValue: "VERTICAL",
     },
   },
 ];
@@ -114,30 +127,16 @@ const TestParameter2000: React.FC = () => {
                 <td>{label}</td>
                 <td>
                   <IonInput
-                    className="custom"
-                    {...propshot}
-                    type={
-                      type === "number"
-                        ? "number"
-                        : type === "number"
-                        ? "number"
-                        : "text"
-                    }
-                    {...register(propshot.name, { required: required })}
+                    value={propshot.defaultValue}
+                    readonly
+                    {...register(propshot.name)}
                   ></IonInput>
                 </td>
                 <td>
                   <IonInput
-                    className="custom"
-                    {...propscold}
-                    type={
-                      type === "number"
-                        ? "number"
-                        : type === "number"
-                        ? "number"
-                        : "text"
-                    }
-                    {...register(propscold.name, { required: required })}
+                    value={propscold.defaultValue}
+                    readonly
+                    {...register(propscold.name)}
                   ></IonInput>
                 </td>
               </tr>

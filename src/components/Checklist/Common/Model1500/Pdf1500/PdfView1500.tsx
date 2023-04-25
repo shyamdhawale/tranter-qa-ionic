@@ -3,10 +3,19 @@ import axios from "axios";
 import { useLocation } from "react-router";
 import { PDFViewer } from "@react-pdf/renderer";
 
-import { Page, Document, StyleSheet } from "@react-pdf/renderer";
+import { Page, Document, StyleSheet, View } from "@react-pdf/renderer";
+
+import ChecklistSign from "../../ChecklistSign";
+
 import Header1500 from "./Header1500";
 import Chracteristics1500 from "./Characteristics1500";
 import ReportHeaderRow1500 from "./ReportHeaderRow1500";
+import Remarks1500 from "./Remarks1500";
+import Nozzel1500 from "./Nozzel1500";
+import HeaterImage1500 from "./HeaterImage1500";
+import PdfHydrostaticHeader1500 from "./PdfHydrostaticReport/PdfHydrostaticHeader1500";
+import PdfTestParameter1500 from "./PdfHydrostaticReport/PdfTestParameter1500";
+import PdfObservations1500 from "./PdfHydrostaticReport/PdfObservations1500";
 
 //header
 
@@ -28,67 +37,20 @@ const PdfView1500: React.FC = () => {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
-  const [resultsDetail, setresultsDetail] = useState<{
-    customer: String;
-    supplier: String;
-    vendorcode: String;
-    classification: String;
-    partname: String;
-    critical: String;
-    partno: String;
-    major: String;
-    mfgsrno: String;
-    minor: String;
-    drgno: String;
-    actualresult_1: String;
-    actualresult_2: String;
-    actualresult_3: String;
-    actualresult_4: String;
-    actualresult_5: String;
-    actualresult_6: String;
-    actualresult_7: String;
-    actualresult_8: String;
-    actualresult_9: String;
-    actualresult_10: String;
-    actualresult_11: String;
-    actualresult_12: String;
-    actualresult_13: String;
-    actualresult_14: String;
-    actualresult_15: String;
-    actualresult_16: String;
-    actualresult_17: String;
-    actualresult_18: String;
-    actualresult_19: String;
-    actualresult_20: String;
-    actualresult_21: String;
-    actualresult_22: String;
-    actualresult_23: String;
-    actualresult_24: String;
-    actualresult_25: String;
-    actualresult_26: String;
-    actualresult_27: String;
-    actualresult_28: String;
-    actualresult_29: String;
-    actualresult_30: String;
-    actualresult_31: String;
-    actualresult_32: String;
-    actualresult_33: String;
-    actualresult_34: String;
-    actualresult_35: String;
-    actualresult_36: String;
-    createAt: String;
-  }>({
-    customer: "",
-    supplier: "",
-    vendorcode: "",
-    classification: "",
-    partname: "",
-    critical: "",
-    partno: "",
-    major: "",
-    mfgsrno: "",
-    minor: "",
-    drgno: "",
+  const [checklist, setChecklist] = useState({
+    header_supplier: "",
+    header_customer: "",
+    header_vendorcode: "",
+    header_classification: "",
+    header_partname: "",
+    header_critical: "",
+    header_parno: "",
+    header_major: "",
+    header_mfgsrno: "",
+    header_minor: "",
+    header_drgno: "",
+    header_date: "",
+    header_reportno: "",
     actualresult_1: "",
     actualresult_2: "",
     actualresult_3: "",
@@ -125,35 +87,97 @@ const PdfView1500: React.FC = () => {
     actualresult_34: "",
     actualresult_35: "",
     actualresult_36: "",
+    hyd_header_reportno: "",
+    hyd_header_mfgsrno: "",
+    hyd_header_sono: "",
+    hyd_header_model: "",
+    hyd_header_tagno: "",
+    hyd_header_drgno: "",
+    hyd_header_pdirno: "",
+    hyd_test_hotside_1: "",
+    hyd_test_coldside_1: "",
+    hyd_test_hotside_2: "",
+    hyd_test_coldside_2: "",
+    hyd_test_hotside_3: "",
+    hyd_test_coldside_3: "",
+    hyd_test_hotside_4: "",
+    hyd_test_coldside_4: "",
+    hyd_test_hotside_5: "",
+    hyd_test_coldside_5: "",
+    hyd_test_hotside_6: "",
+    hyd_test_coldside_6: "",
+    hyd_obs_gaugeidno_1: "",
+    hyd_obs_guagerange_1: "",
+    hyd_obs_calibrationvalid_1: "",
+    hyd_obs_observedpressure_1: "",
+    hyd_obs_gaugeidno_2: "",
+    hyd_obs_guagerange_2: "",
+    hyd_obs_calibrationvalid_2: "",
+    hyd_obs_observedpressure_2: "",
+    hyd_obs_visual_noleakobs: "",
+    hyd_obs_visual_leakobs: "",
+    hyd_obs_visual_novisiblepermanentobs: "",
+    hyd_obs_dicision_satisfactory: "",
+    hyd_obs_dicision_unsatisfactory: "",
+    hyd_obs_dicision_verifypresuretest: "",
+
+    owner: "",
+    updatedbyuser: "",
+    frontviewphotoid: "",
+    frontviewphotofilename: "",
+    sideviewphotofilename: "",
+    equipmentphotoone_id: "",
+
+    equipmentphotofilename_one: "",
+    equipmentphototwo_id: "",
+    equipmentphotofilename_two: "",
     createAt: "",
   });
 
-  const lastPath = location.pathname.split("/")[2]; // get only last params
+  const lastPath = location.pathname.split("/")[4]; // get only last params in this case path 4 is require
 
   useEffect(() => {
     setIsLoading(true);
     axios
       .get(
-        "http://" + process.env.REACT_APP_URL + "/api/inspection/" + lastPath
+        "http://" + process.env.REACT_APP_URL + "/api/checklist1500/" + lastPath
       )
       .then((res) => {
-        // setresultsDetail(res.data.data);
+        setChecklist(res.data.data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, [lastPath]);
   //   return <></>;
-  console.log(resultsDetail);
+  console.log(checklist);
   if (isLoading) {
     return <p>loading</p>;
   }
   return (
     <PDFViewer width="100%" height="800">
-      <Document>
+      <Document
+        producer="Tranter India"
+        creator="Tranter India"
+        author="Tranter India"
+        title="Pre-despatch inspection checklist"
+      >
         <Page size="A4" style={styles.page} wrap={true}>
-          <Header1500 />
-          <ReportHeaderRow1500 items={resultsDetail} />
-          <Chracteristics1500 results={resultsDetail} />
+          <View>
+            <Header1500
+              reportNo={checklist.header_mfgsrno}
+              headerDate={checklist.header_date}
+            />
+            <ReportHeaderRow1500 mfgsrno={checklist.header_mfgsrno} />
+          </View>
+
+          <Chracteristics1500 results={checklist} />
+          <Nozzel1500 results={checklist} />
+          <Remarks1500 />
+          <ChecklistSign />
+          <PdfHydrostaticHeader1500 items={checklist} />
+          <PdfTestParameter1500 results={checklist} />
+          <PdfObservations1500 results={checklist} />
+          <HeaterImage1500 checklist={checklist} />
         </Page>
       </Document>
     </PDFViewer>

@@ -23,7 +23,10 @@ import { Redirect, useHistory, useLocation } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 
 import "./Login.css";
+import jwtInterceoptor from "../hook/jwtInterceptor";
 import AuthContext from "../store/auth-context";
+import axios from "axios";
+import { error } from "console";
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -36,14 +39,31 @@ const Login: React.FC = () => {
   const isloggin = authctx.isLoggedIn;
 
   useEffect(() => {
-    if (isloggin) {
-      setLogin(true);
-    }
-  }, [isloggin, setLogin]);
+    jwtInterceoptor
+      // axios
+      .get("http://" + process.env.REACT_APP_URL + "/auth/checkauth")
+      .then((res) => {
+        console.log(res.status);
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-  if (notlogin) {
-    return <Redirect to={"/"}></Redirect>;
-  }
+    //       // history.push("/login");
+    //       // }
+    //     });
+  }, [history]);
+
+  // useEffect(() => {
+  //   if (isloggin) {
+  //     setLogin(true);
+  //   }
+  // }, [isloggin, setLogin]);
+
+  // if (notlogin) {
+  //   return <Redirect to={"/"}></Redirect>;
+  // }
 
   const handleLogin = () => {
     if (!username) {
@@ -56,12 +76,65 @@ const Login: React.FC = () => {
       setIsError(true);
       return;
     }
-    const loginData = {
-      username: username,
-      password: password,
-    };
-    authctx.onLogin(username, password);
-    history.push("/");
+    jwtInterceoptor
+      // axios
+      .get("http://" + process.env.REACT_APP_URL + "/auth/checkauth")
+      .then((res) => {
+        console.log(res.status);
+        history.push("/");
+      })
+      .catch((err) => {
+        // if (err.response.status === 401) {
+
+        if (err.response) {
+          if (err.response.status === 406) {
+            // history.push("/login");
+            authctx.login({
+              username: username,
+              password: password,
+            });
+            history.push("/login");
+          }
+        }
+        if (err) {
+          authctx.login({
+            username: username,
+            password: password,
+          });
+          history.push("/login");
+        }
+      });
+
+    // authctx.onLogin(username, password);
+    // history.push("/");
+
+    // axios
+    //   .post("http://" + process.env.REACT_APP_URL + "/api/login", {
+    //     username,
+    //     password,
+    //   })
+    //   .then((response) => {
+    //     console.log(response.data);
+
+    //     if (response.status === 200) {
+    //       setMessage(response.data.message);
+    //       setIsError(true);
+    //     }
+    //     // send the token and role to auth context.
+    //     // authctx.onLogin(response.data.token, response.data.role);
+    //     authctx.login(username, password);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response.status);
+    //     if (err.response.status === 404) {
+    //       setMessage(err.response.data.message);
+    //       setIsError(true);
+    //     }
+    //     if (err.response.status === 400) {
+    //       setMessage(err.response.data.message);
+    //       setIsError(true);
+    //     }
+    //   });
   };
 
   return (

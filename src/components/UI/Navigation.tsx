@@ -10,13 +10,16 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import AuthContext from "../../store/auth-context";
+import { useHistory } from "react-router";
 
 const Navigation: React.FC = () => {
   const authctx = useContext(AuthContext);
+  const history = useHistory();
 
   const handleLogout = () => {
     console.log("click on logout");
-    authctx.onLogout();
+    authctx.logout();
+    history.push("/login");
   };
   return (
     <IonMenu contentId="main-content">

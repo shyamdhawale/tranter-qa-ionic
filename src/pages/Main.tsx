@@ -18,11 +18,13 @@ import AuthContext from "../store/auth-context";
 
 const Main: React.FC = () => {
   const authCtx = useContext(AuthContext);
-  const isLogin = authCtx.isLoggedIn;
+  // console.log(authCtx.user);
+  // authCtx.
+  // const isLogin = authCtx.;
   // console.log(isLogin);
-  if (!isLogin) {
-    return <Redirect to={{ pathname: "/login" }} />;
-  }
+  // if (!isLogin) {
+  //   return <Redirect to={{ pathname: "/login" }} />;
+  // }
 
   return (
     // <IonPage>

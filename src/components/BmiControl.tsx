@@ -13,6 +13,7 @@ const BmiControl: React.FC<{
           <IonIcon slot="start" icon={calculatorOutline} />
           Calculate
         </IonButton>
+        <IonRow>Enter Input on Click you have to enter</IonRow>
       </IonCol>
       <IonCol>
         <IonButton onClick={props.onResetInput}>

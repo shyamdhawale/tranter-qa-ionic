@@ -3,16 +3,20 @@ import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
 const remarks = [
   {
+    srno: 1,
+    name: "VISUAL INSPECTION: NO BURR, NO MARKS, NO CRACKS OBSERVED.",
+  },
+  {
     srno: 2,
     name: "WELDING: FOUND SATISFACTORY.",
   },
   {
     srno: 3,
-    name: "PAINT- ONE COAT OF ZINC CHROMATE PRIMER &amp; TWO COATS OF ONAN GREEN SHADE; TOTAL DFT: 100-130 DFT.",
+    name: "PAINT- ONE COAT OF ZINC CHROMATE PRIMER & TWO COATS OF ONAN GREEN SHADE; TOTAL DFT: 100-130 DFT.",
   },
   {
     srno: 4,
-    name: "PART NO.NAME PLATE &amp; LOGO : FOUND OK.",
+    name: "PART NO.NAME PLATE & LOGO : FOUND OK.",
   },
   {
     srno: 5,
@@ -24,7 +28,7 @@ const remarks = [
   },
   {
     srno: 7,
-    name: "NUT/ BOLT: FREE FROM RUST &amp; TIGHTENED PROPERLY, PAINT MARKING DONE. ",
+    name: "NUT/ BOLT: FREE FROM RUST & TIGHTENED PROPERLY, PAINT MARKING DONE. ",
   },
   {
     srno: 8,
@@ -52,7 +56,7 @@ const remarks = [
   },
   {
     srno: 14,
-    name: "RADIATION CONTAMINATION MONITORING CHECKED &amp; FOUND NO RADIATION FROM EQUIPMENT.",
+    name: "RADIATION CONTAMINATION MONITORING CHECKED & FOUND NO RADIATION FROM EQUIPMENT.",
   },
   {
     srno: 15,

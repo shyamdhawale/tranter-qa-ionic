@@ -83,7 +83,7 @@ const ChecklistPhotoSide: React.FC<{ reportNo: any; modelNo: String }> = (
         presentAlert({
           header: "Error!",
           message: "There was error to upload photo!",
-          buttons: ["OK"],
+         buttons: ["OK"],       
         });
       });
   };
@@ -136,7 +136,8 @@ const ChecklistPhotoSide: React.FC<{ reportNo: any; modelNo: String }> = (
             setIsUpload(false);
           }}
         >
-          <IonIcon icon={camera}></IonIcon>
+          <IonIcon></IonIcon>
+          <IonIcon icon={camera} ></IonIcon>
         </IonButton>
       </IonRow>
       {photoValue && (

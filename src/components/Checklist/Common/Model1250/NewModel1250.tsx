@@ -7,11 +7,15 @@ import {
   useIonLoading,
   useIonViewWillLeave,
   IonLoading,
+  IonInput,
+  IonButton,
+  IonRow,
 } from "@ionic/react";
 import React, { useState, useContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { ErrorMessage } from "@hookform/error-message";
 
 import Header from "../../../UI/Header";
 import Navigation from "../../../UI/Navigation";
@@ -21,10 +25,17 @@ import Model1250Characteristics from "./Model1250Characteristics";
 
 //import "./Inspection.module.css";
 import AuthContext from "../../../../store/auth-context";
+import HydrostaticTestReportHeader1250 from "./HydrostaticReport/HydrostaticTestReportHeader1250";
+import TestParameter1250 from "./HydrostaticReport/TestParameter1250";
+import Observations1250 from "./HydrostaticReport/Observations1250";
+import ChecklistPhotoMain1250 from "./ChecklistPhotoMain1250";
 
 interface defaultValues {
   client: String;
   pono: Number;
+  somename: String;
+  header_date: Date;
+  header_mfgsrno: String;
 }
 
 const NewModel1250: React.FC = () => {
@@ -34,15 +45,15 @@ const NewModel1250: React.FC = () => {
   const [showLoading, setShowLoading] = useState(false);
 
   const history = useHistory();
-  const [present, dismiss] = useIonLoading();
+  // const [present, dismiss] = useIonLoading();
   const [handlerMessage, setHandlerMessage] = useState("");
-  const [roleMessage, setRoleMessage] = useState("");
-  const [sererror, setSererror] = useState("");
+  // const [roleMessage, setRoleMessage] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
+  const [isReport, setIsReport] = useState(false);
   const methods = useForm<defaultValues>({
     // defaultValues: {
-    //   client: "tranter",
-    //   pono: 12321,
+    //   // abbc: false,
     // },
     mode: "onTouched",
     reValidateMode: "onChange",
@@ -50,13 +61,15 @@ const NewModel1250: React.FC = () => {
   useIonViewWillEnter(() => {
     // console.log("ionViewDidEnter");
     methods.reset({}, { keepDefaultValues: true });
+    setIsReport(false);
   });
   useIonViewWillLeave(() => {
     reset();
   });
+
   const {
     reset,
-    formState: { isValid },
+    formState: { isValid, errors },
   } = methods;
 
   const authCtx = useContext(AuthContext);
@@ -92,22 +105,35 @@ const NewModel1250: React.FC = () => {
               setShowLoading(true);
               axios
                 .post(
-                  "http://" + process.env.REACT_APP_URL + "/api/inspection",
+                  "http://" + process.env.REACT_APP_URL + "/api/checklist1250",
                   {
                     data: draftData,
                   }
                 )
                 .then((res) => {
                   console.log(res);
-                  // setSererror("Data Saved Successfully");
                   setIsLoading(false);
                   setShowLoading(false);
-                  successAlert({
-                    header: "Info",
-                    subHeader: res.data.message,
-                    buttons: ["OK"],
-                  });
-                  history.push("/");
+                  if (res.data.message === "Report Saved Successfully!") {
+                    // setSererror("Data Saved Successfully");
+                    setIsLoading(false);
+                    setShowLoading(false);
+                    successAlert({
+                      header: "Info",
+                      subHeader: res.data.message,
+                      buttons: ["OK"],
+                    });
+                    history.push("/");
+                  } else {
+                    // setIsLoading(false);
+                    // setShowLoading(false);
+
+                    successAlert({
+                      header: "Error",
+                      subHeader: "Please check SR. No.",
+                      buttons: ["OK"],
+                    });
+                  }
                 })
                 .catch((err) => {
                   errorAlert({
@@ -120,32 +146,55 @@ const NewModel1250: React.FC = () => {
             },
           },
         ],
-        // onDidDismiss: (e: CustomEvent) =>
-        //   setRoleMessage(`Dismissed with role: ${e.detail.role}`),
       });
     } else {
       setTimeout(() => {
         history.push("/");
       }, 3100);
-      presentAlert({
-        // header: "Message",
-        subHeader: "first message",
-        // message: "Inspection report stored!",
-        buttons: ["OK"],
-      });
+      // presentAlert({
+      //   // header: "Message",
+      //   subHeader: "first message",
+      //   // message: "Inspection report stored!",
+      //   buttons: ["OK"],
+      // });
     }
   };
+  // this function is for finding duplicates mfgsrno.
+  const findduplicates = (arr: any) =>
+    arr.filter((item: any, index: number) => {
+      if (item.header_mfgsrno === methods.getValues().header_mfgsrno) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 
-  // if (isLoading) {
-  //   return <p>Loading</p>;
-  // }
-
-  // useIonViewWillEnter(() => {
-  //   setShowLoading(true);
-  //   loadProducts().then(() => {
-  //     setShowLoading(false);
-  //   });
-  // });
+  const onReportChange = () => {
+    axios
+      .get("http://" + process.env.REACT_APP_URL + "/api/checklist1250")
+      .then((res) => {
+        const isDuplicate = findduplicates(res.data);
+        console.log(isDuplicate);
+        if (isDuplicate.length !== 0) {
+          errorAlert({
+            header: "Error!",
+            subHeader: "Duplicate SR. NO.",
+            message: "Enter correct SR. NO.",
+            buttons: ["OK"],
+          });
+        } else {
+          setIsReport(true);
+        }
+      })
+      .catch((err) => {
+        errorAlert({
+          header: "Error!",
+          subHeader: "Network error",
+          buttons: ["OK"],
+        });
+      });
+    // setIsReport(true);
+  };
 
   return (
     <>
@@ -157,10 +206,25 @@ const NewModel1250: React.FC = () => {
             <form onSubmit={(e) => onSubmit(e)}>
               <IonGrid>
                 <Model1250Header />
-                <Model1250Characteristics />
-                <Model1250Control />
+                {isReport ? (
+                  <>
+                    <Model1250Characteristics />
+                    <HydrostaticTestReportHeader1250 />
+                    <TestParameter1250 />
+                    <Observations1250 />
+                    <ChecklistPhotoMain1250
+                      reportSrNo={methods.getValues().header_mfgsrno}
+                    />
+                    <Model1250Control />
+                  </>
+                ) : (
+                  <IonButton className="ion-padding" onClick={onReportChange}>
+                    Next
+                  </IonButton>
+                )}
               </IonGrid>
             </form>
+
             <IonLoading
               isOpen={showLoading}
               onDidDismiss={() => setShowLoading(false)}

@@ -12,6 +12,7 @@ import {
 } from "@ionic/react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import jwtInterceoptor from "../../../../../hook/jwtInterceptor";
 
 const ListAllChecklist2000 = () => {
   const history = useHistory();
@@ -31,7 +32,8 @@ const ListAllChecklist2000 = () => {
   ]);
 
   useIonViewWillEnter(() => {
-    axios
+    jwtInterceoptor
+      // axios
       .get("http://" + process.env.REACT_APP_URL + "/api/checklist2000")
       .then((res) => {
         const sortedData = res.data.sort(function (a: any, b: any) {

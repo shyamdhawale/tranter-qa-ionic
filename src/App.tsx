@@ -51,13 +51,23 @@ import ChecklistPdf2000 from "./pages/Checklist2000/ChecklistPdf2000";
 import ChecklistView2000 from "./pages/Checklist2000/ChecklistView2000";
 import ListChecklist2000 from "./pages/ListChecklist/ListChecklist2000";
 import ChecklistEdit2000 from "./pages/Checklist2000/ChecklistEdit2000";
+import ChecklistView1500 from "./pages/Checklist1500/ChecklistView1500";
+import ChecklistPdf1500 from "./pages/Checklist1500/ChecklistPdf1500";
+import ChecklistEdit1500 from "./pages/Checklist1500/ChecklistEdit1500";
+import ListAllChecklist1500 from "./components/Checklist/Common/Model1500/View/ListAllChecklist1500";
+import ListChecklist1500 from "./pages/ListChecklist/ListChecklist1500";
+import ListChecklist500 from "./pages/ListChecklist/ListChecklist500";
+import ListChecklist1250 from "./pages/ListChecklist/ListChecklist1250";
+import ChecklistView1250 from "./pages/Checklist1250/ChecklistView1250";
+import ChecklistPdf1250 from "./pages/Checklist1250/ChecklistPdf1250";
+import ChecklistEdit1250 from "./pages/Checklist1250/ChecklistEdit1250";
 
 // import NewModel500 from "./components/Checklist/Common/Model2000/NewModel500";
 setupIonicReact();
 
 const App: React.FC = () => {
   const authctx = useContext(AuthContext);
-  const isAuthed = authctx.isLoggedIn;
+  const isAuthed = 1;
 
   return (
     <IonApp>
@@ -77,8 +87,39 @@ const App: React.FC = () => {
             exact
           ></Route>
           <Route
+            path="/checklist/1250/view/:id"
+            component={ChecklistView1250}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/1250/pdf/:id"
+            component={ChecklistPdf1250}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/1250/edit/:id"
+            component={ChecklistEdit1250}
+            exact
+          ></Route>
+          {/* Checklist 1500 */}
+          <Route
             path="/checklist/new/1500"
             component={NewModel1500}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/1500/view/:id"
+            component={ChecklistView1500}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/1500/pdf/:id"
+            component={ChecklistPdf1500}
+            exact
+          ></Route>
+          <Route
+            path="/checklist/1500/edit/:id"
+            component={ChecklistEdit1500}
             exact
           ></Route>
           {/* checklist 2000 */}
@@ -150,15 +191,38 @@ const App: React.FC = () => {
           <Route
             path="/list-checklist"
             exact
-            render={() => {
-              return isAuthed ? <ListChecklist /> : <Login />;
-            }}
+            component={ListChecklist}
+            // render={() => {
+            //   return isAuthed ? <ListChecklist /> : <Login />;
+            // }}
           ></Route>
           <Route
             path="/list-checklist/2000"
             exact
+            component={ListChecklist2000}
+            // render={() => {
+            //   return isAuthed ? <ListChecklist2000 /> : <Login />;
+            // }}
+          ></Route>
+          <Route
+            path="/list-checklist/1500"
+            exact
             render={() => {
-              return isAuthed ? <ListChecklist2000 /> : <Login />;
+              return isAuthed ? <ListChecklist1500 /> : <Login />;
+            }}
+          ></Route>
+          <Route
+            path="/list-checklist/1250"
+            exact
+            render={() => {
+              return isAuthed ? <ListChecklist1250 /> : <Login />;
+            }}
+          ></Route>
+          <Route
+            path="/list-checklist/500"
+            exact
+            render={() => {
+              return isAuthed ? <ListChecklist500 /> : <Login />;
             }}
           ></Route>
           {/* List checklist end here */}

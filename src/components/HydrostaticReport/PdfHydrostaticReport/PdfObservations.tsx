@@ -11,6 +11,7 @@ interface props {
     gaugerange_2: String;
     calibration_2: String;
     observed_2: String;
+
   };
 }
 
@@ -114,6 +115,7 @@ const PdfTestParameter: React.FC<props> = ({ results }) => {
           <Text style={styles.calibrationvalid}>{results.calibration_2}</Text>
           <Text style={styles.observedpressure}>{results.observed_2}</Text>
         </View>
+        <View style={styles.row}></View>
       </View>
     </View>
   );

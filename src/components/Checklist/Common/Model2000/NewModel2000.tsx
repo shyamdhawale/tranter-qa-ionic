@@ -29,6 +29,7 @@ import HydrostaticTestReportHeader2000 from "./HydrostaticReport/HydrostaticTest
 import TestParameter2000 from "./HydrostaticReport/TestParameter2000";
 import Observations2000 from "./HydrostaticReport/Observations2000";
 import ChecklistPhotoMain2000 from "./ChecklistPhotoMain2000";
+import jwtInterceoptor from "../../../../hook/jwtInterceptor";
 
 interface defaultValues {
   client: String;
@@ -170,7 +171,8 @@ const NewModel2000: React.FC = () => {
     });
 
   const onReportChange = () => {
-    axios
+    jwtInterceoptor
+      // axios
       .get("http://" + process.env.REACT_APP_URL + "/api/checklist2000")
       .then((res) => {
         const isDuplicate = findduplicates(res.data);
@@ -192,6 +194,7 @@ const NewModel2000: React.FC = () => {
           subHeader: "Network error",
           buttons: ["OK"],
         });
+        history.push("/login");
       });
     // setIsReport(true);
   };

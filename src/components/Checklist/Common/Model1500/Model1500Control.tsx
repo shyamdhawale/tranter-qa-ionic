@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { save, refreshOutline } from "ionicons/icons";
-import {
-  IonButton,
-  IonCol,
-  useIonAlert,
-  IonRow,
-  useIonViewDidLeave,
-  useIonViewWillLeave,
-} from "@ionic/react";
+import React, { useState } from "react";
+
+import { IonButton, IonCol, useIonAlert, IonRow } from "@ionic/react";
 import { useFormContext } from "react-hook-form";
 import { Prompt, useHistory } from "react-router-dom";
 
-const Model1550Control: React.FC = () => {
+const Model1500Control: React.FC = () => {
   const history = useHistory();
   const {
     reset,
@@ -147,4 +140,4 @@ const Model1550Control: React.FC = () => {
   );
 };
 
-export default Model1550Control;
+export default Model1500Control;

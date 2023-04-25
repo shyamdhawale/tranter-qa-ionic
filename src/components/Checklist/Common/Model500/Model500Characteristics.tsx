@@ -1,5 +1,11 @@
 import React from "react";
-import { IonGrid, IonInput, IonRow } from "@ionic/react";
+import {
+  IonGrid,
+  IonInput,
+  IonRow,
+  IonSelect,
+  IonSelectOption,
+} from "@ionic/react";
 import { useFormContext } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
@@ -18,6 +24,9 @@ const dimentionData = [
     isrange: true,
     minvalue: 1410,
     maxvalue: 1410,
+
+    options: true,
+    optionsrange: [1410],
 
     propsActualResult: {
       name: "actualresult_1",
@@ -39,6 +48,9 @@ const dimentionData = [
     minvalue: 605,
     maxvalue: 605,
 
+    options: true,
+    optionsrange: [605],
+
     propsActualResult: {
       name: "actualresult_2",
       placeholder: "Enter Actual Result",
@@ -58,6 +70,10 @@ const dimentionData = [
     isrange: true,
     minvalue: 1410,
     maxvalue: 1410,
+
+    options: true,
+    optionsrange: [1410],
+
     propsActualResult: {
       name: "actualresult_3",
       placeholder: "Enter Actual Result",
@@ -77,6 +93,9 @@ const dimentionData = [
     isrange: true,
     minvalue: 605,
     maxvalue: 605,
+
+    options: true,
+    optionsrange: [605],
 
     propsActualResult: {
       name: "actualresult_4",
@@ -98,6 +117,9 @@ const dimentionData = [
     minvalue: 1224,
     maxvalue: 1232,
 
+    options: true,
+    optionsrange: [1224, 1225, 1226, 1227, 1228, 1229, 1230, 1231, 1232],
+
     propsActualResult: {
       name: "actualresult_5",
       placeholder: "Enter Actual Result",
@@ -105,7 +127,7 @@ const dimentionData = [
   },
   {
     seq: 6,
-    label1: "Height Of Raw Outlet Pipe From Base",
+    label1: "Height of Raw Outlet Pipe From Base",
     type1: "text",
     required1: true,
 
@@ -117,6 +139,8 @@ const dimentionData = [
     isrange: true,
     minvalue: 1095,
     maxvalue: 2003,
+    options: true,
+    optionsrange: [1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103],
 
     propsActualResult: {
       name: "actualresult_6",
@@ -125,7 +149,7 @@ const dimentionData = [
   },
   {
     seq: 7,
-    label1: "Height From Base To Horizontal Angel(50x6)",
+    label1: "Height From Base To Horizontal Angle(50x6)",
     type1: "text",
     required1: true,
 
@@ -137,6 +161,8 @@ const dimentionData = [
     isrange: true,
     minvalue: 712,
     maxvalue: 718,
+    options: true,
+    optionsrange: [712, 713, 714, 715, 716, 717, 718],
 
     propsActualResult: {
       name: "actualresult_7",
@@ -145,7 +171,7 @@ const dimentionData = [
   },
   {
     seq: 8,
-    label1: "Height From Base To Side Support Angel(50x50x5)",
+    label1: "Height From Base To Side Support Angle(50x50x5)",
     type1: "text",
     required1: true,
 
@@ -157,6 +183,8 @@ const dimentionData = [
     isrange: true,
     minvalue: 915,
     maxvalue: 921,
+    options: true,
+    optionsrange: [915, 916, 917, 918, 919, 920, 921],
 
     propsActualResult: {
       name: "actualresult_8",
@@ -165,7 +193,7 @@ const dimentionData = [
   },
   {
     seq: 9,
-    label1: "Distance From Base To Upper Angel(50x6)",
+    label1: "Distance From Base To Upper Angle(50x6)",
     type1: "text",
     required1: true,
 
@@ -175,8 +203,10 @@ const dimentionData = [
     dimension: "1028.5",
     add: "±4",
     isrange: true,
-    minvalue: 1024.5,
+    minvalue: 1024,
     maxvalue: 1033,
+    options: true,
+    optionsrange: [1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033],
 
     propsActualResult: {
       name: "actualresult_9",
@@ -185,7 +215,7 @@ const dimentionData = [
   },
   {
     seq: 10,
-    label1: "Center Distance Of Pressure Tank From Frame",
+    label1: "Centre Distance of Pressure Tank From Frame",
     type1: "text",
     required1: true,
 
@@ -198,6 +228,9 @@ const dimentionData = [
     minvalue: 372,
     maxvalue: 378,
 
+    options: true,
+    optionsrange: [372, 373, 374, 375, 376, 377, 378],
+
     propsActualResult: {
       name: "actualresult_10",
       placeholder: "Enter Actual Result",
@@ -205,7 +238,7 @@ const dimentionData = [
   },
   {
     seq: 11,
-    label1: "Center Distance Of Pressure Tank From Base",
+    label1: "Centre Distance of Pressure Tank From Base",
     type1: "text",
     required1: true,
 
@@ -218,6 +251,9 @@ const dimentionData = [
     minvalue: 1846,
     maxvalue: 1854,
 
+    options: true,
+    optionsrange: [1846, 1847, 1848, 1849, 1850, 1851, 1852, 1853, 1854],
+
     propsActualResult: {
       name: "actualresult_11",
       placeholder: "Enter Actual Result",
@@ -225,7 +261,7 @@ const dimentionData = [
   },
   {
     seq: 12,
-    label1: "Center Cap Elevation From Pressure Tank End",
+    label1: "Centre Cap Elevation From Pressure Tank End",
     type1: "text",
     required1: true,
 
@@ -237,6 +273,9 @@ const dimentionData = [
     isrange: true,
     minvalue: 155,
     maxvalue: 159,
+
+    options: true,
+    optionsrange: [155, 156, 157, 158, 159],
 
     propsActualResult: {
       name: "actualresult_12",
@@ -254,6 +293,8 @@ const dimentionData = [
     required2: true,
     dimension: "1/4 Inch NPT 10 Places",
     add: "",
+    isReadonly: true,
+    defaultValue: "1/4 Inch NPT 10 Places",
 
     propsActualResult: {
       name: "actualresult_13",
@@ -262,7 +303,7 @@ const dimentionData = [
   },
   {
     seq: 14,
-    label1: "Center To Center Distance Between Adjacent Cap",
+    label1: "Centre To Centre Distance Between Adjacent Cap",
     type1: "text",
     required1: true,
 
@@ -272,10 +313,13 @@ const dimentionData = [
     dimension: "300",
     add: "±3",
     dimension2: " / 400",
-    add2: "±",
+    add2: "±3",
     isrange: true,
     minvalue: 297,
     maxvalue: 303,
+
+    options: false,
+    optionsrange: [],
 
     propsActualResult: {
       name: "actualresult_14",
@@ -284,7 +328,7 @@ const dimentionData = [
   },
   {
     seq: 15,
-    label1: "No Of Eye Bolts/CRS Distance",
+    label1: "No of Eye Bolts/CRS Distance",
     type1: "text",
     required1: true,
 
@@ -293,12 +337,15 @@ const dimentionData = [
     required2: true,
     dimension: "4/1178",
     add: "±4",
-    dimension2: "750",
+    dimension2: "X 750",
     add2: "±3",
 
     isrange: true,
     minvalue: 1174,
     maxvalue: 1182,
+
+    options: false,
+    optionsrange: [],
 
     propsActualResult: {
       name: "actualresult_15",
@@ -308,7 +355,7 @@ const dimentionData = [
 
   {
     seq: 16,
-    label1: "First Foundation Slot Elevation CRS Distance",
+    label1: "First Foundation Slot Elevation & CRS Distance",
     type1: "text",
     required1: true,
 
@@ -323,6 +370,9 @@ const dimentionData = [
     minvalue: 222,
     maxvalue: 228,
 
+    options: false,
+    optionsrange: [],
+
     propsActualResult: {
       name: "actualresult_16",
       placeholder: "Enter Actual Result",
@@ -334,12 +384,15 @@ const dimentionData = [
     type1: "text",
     required1: true,
 
-    label2: "6 No./Dia.14 X 34",
+    label2: "6 Nos./ Dia. 14X34",
     type2: "text",
     required2: true,
-    dimension: "6 No./Dia.14 X 34",
+    dimension: "6 Nos./ Dia. 14X34",
     add: "",
     isrange: false,
+
+    options: false,
+    optionsrange: [],
 
     propsActualResult: {
       name: "actualresult_17",
@@ -348,7 +401,7 @@ const dimentionData = [
   },
   {
     seq: 18,
-    label1: "LTA & HTA Coolers Frame Plate Elevation From Front Of Skid Frame",
+    label1: "LTA & HTA Coolers Frame Plate  Elevation From Front of Skid Frame",
     type1: "text",
     required1: true,
 
@@ -360,6 +413,8 @@ const dimentionData = [
     isrange: true,
     minvalue: 327,
     maxvalue: 333,
+    options: true,
+    optionsrange: [327, 328, 329, 330, 331, 332, 333],
 
     propsActualResult: {
       name: "actualresult_18",
@@ -379,6 +434,9 @@ const dimentionData = [
     add: "±3",
     dimension2: " (105 + 225)",
     add2: "",
+
+    options: true,
+    optionsrange: [327, 328, 329, 330, 331, 332, 333],
 
     isrange: true,
     minvalue: 327,
@@ -422,6 +480,9 @@ const dimentionData = [
     minvalue: 114,
     maxvalue: 120,
 
+    options: true,
+    optionsrange: [114, 115, 116, 117, 118, 119, 120],
+
     propsActualResult: {
       name: "actualresult_20",
       placeholder: "Enter Actual Result",
@@ -441,6 +502,9 @@ const dimentionData = [
     isrange: true,
     minvalue: 779,
     maxvalue: 779,
+
+    options: true,
+    optionsrange: [779],
 
     propsActualResult: {
       name: "actualresult_21",
@@ -462,6 +526,9 @@ const dimentionData = [
     minvalue: 230,
     maxvalue: 230,
 
+    options: true,
+    optionsrange: [230],
+
     propsActualResult: {
       name: "actualresult_22",
       placeholder: "Enter Actual Result",
@@ -479,6 +546,8 @@ const dimentionData = [
     dimension: "OD 100/190.5",
     add: "",
     isrange: false,
+    isReadonly: true,
+    defaultValue: "OD 100/190.5",
 
     propsActualResult: {
       name: "actualresult_23",
@@ -500,6 +569,9 @@ const dimentionData = [
     minvalue: 317,
     maxvalue: 323,
 
+    options: true,
+    optionsrange: [317, 318, 319, 320, 321, 322, 323],
+
     propsActualResult: {
       name: "actualresult_24",
       placeholder: "Enter Actual Result",
@@ -517,6 +589,8 @@ const dimentionData = [
     dimension: "1/2 Inch NPT 5 Places",
     add: "",
     isrange: false,
+    isReadonly: true,
+    defaultValue: "1/2 Inch NPT 5 Places",
 
     propsActualResult: {
       name: "actualresult_25",
@@ -525,7 +599,7 @@ const dimentionData = [
   },
   {
     seq: "",
-    label1: "LTA COOLER(Model No.GC-026X52",
+    label1: "LTA COOLER (Model No. GX-004X39)",
     type1: "text",
     required1: true,
 
@@ -556,6 +630,9 @@ const dimentionData = [
     minvalue: 130,
     maxvalue: 136,
 
+    options: true,
+    optionsrange: [130, 131, 132, 133, 134, 135, 136],
+
     propsActualResult: {
       name: "actualresult_26",
       placeholder: "Enter Actual Result",
@@ -575,6 +652,9 @@ const dimentionData = [
     isrange: true,
     minvalue: 303,
     maxvalue: 303,
+
+    options: true,
+    optionsrange: [303],
 
     propsActualResult: {
       name: "actualresult_27",
@@ -596,6 +676,9 @@ const dimentionData = [
     minvalue: 135,
     maxvalue: 135,
 
+    options: true,
+    optionsrange: [135],
+
     propsActualResult: {
       name: "actualresult_28",
       placeholder: "Enter Actual Result",
@@ -613,6 +696,9 @@ const dimentionData = [
     dimension: "OD 38.1",
     add: "",
     isrange: false,
+
+    isReadonly: true,
+    defaultValue: "OD 38.1",
 
     propsActualResult: {
       name: "actualresult_29",
@@ -636,6 +722,9 @@ const dimentionData = [
     minvalue: 620,
     maxvalue: 626,
 
+    options: true,
+    optionsrange: [620, 621, 622, 623, 624, 625, 626],
+
     propsActualResult: {
       name: "actualresult_30",
       placeholder: "Enter Actual Result",
@@ -654,6 +743,9 @@ const dimentionData = [
     add: "",
     isragne: false,
 
+    isReadonly: true,
+    defaultValue: "1/8 Inch NPT 4 Places",
+
     propsActualResult: {
       name: "actualresult_31",
       placeholder: "Enter Actual Result",
@@ -661,7 +753,7 @@ const dimentionData = [
   },
   {
     seq: 32,
-    label1: " Distance From Front End To Center Of Make Pipe(38 Od) Of Tank",
+    label1: "Distance From Front End To Center Of Make Pipe (38 OD) Of Tank",
     type1: "text",
     required1: true,
 
@@ -673,6 +765,9 @@ const dimentionData = [
     isrange: true,
     minvalue: 267,
     maxvalue: 273,
+
+    options: true,
+    optionsrange: [267, 268, 269, 270, 271, 272, 273],
 
     propsActualResult: {
       name: "actualresult_32",
@@ -707,24 +802,42 @@ const Model500Characteristics: React.FC = () => {
                   <td>
                     {fields.dimension}
                     <sup>{fields.add}</sup>
+                    {fields.dimension2}
+                    <sup>{fields.add2}</sup>
                   </td>
                   <td>
-                    <IonInput
-                      className="custom"
-                      {...fields.propsActualResult}
-                      type={
-                        fields.type1 === "number"
-                          ? "number"
-                          : fields.type2 === "number"
-                          ? "number"
-                          : "text"
-                      }
-                      {...register(fields.propsActualResult.name, {
-                        required: fields.required1,
-                        min: fields.isrange ? fields.minvalue : undefined,
-                        max: fields.isrange ? fields.maxvalue : undefined,
-                      })}
-                    />
+                    {fields.options ? (
+                      <IonSelect
+                        {...register(fields.propsActualResult.name)}
+                        placeholder="Select Option"
+                      >
+                        {fields.optionsrange.map((a) => (
+                          <IonSelectOption key={a} value={a}>
+                            {a}
+                          </IonSelectOption>
+                        ))}
+                      </IonSelect>
+                    ) : (
+                      <IonInput
+                        className="custom"
+                        {...fields.propsActualResult}
+                        type={
+                          fields.type1 === "number"
+                            ? "number"
+                            : fields.type2 === "number"
+                            ? "number"
+                            : "text"
+                        }
+                        readonly={fields.isReadonly}
+                        value={fields.defaultValue}
+                        {...register(fields.propsActualResult.name, {
+                          required: fields.required1,
+                          min: fields.isrange ? fields.minvalue : undefined,
+                          max: fields.isrange ? fields.maxvalue : undefined,
+                        })}
+                      />
+                    )}
+
                     <ErrorMessage
                       errors={errors}
                       name={fields.propsActualResult.name}

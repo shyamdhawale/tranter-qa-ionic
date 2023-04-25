@@ -6,32 +6,6 @@ import { StyleSheet, Text, View, Image } from "@react-pdf/renderer";
 //header
 
 const styles = StyleSheet.create({
-  // logo: {
-  //   // marginTop: 20,
-  //   // width: ,
-  //   height: 40,
-  //   // marginLeft: 'auto',
-  //   // marginRight: 'auto'
-  // },
-  // container: {
-  //   flexDirection: "column",
-  //   borderBottomWidth: 1,
-  //   borderRight: 1,
-  //   borderTopWidth: 1,
-  //   borderLeftWidth: 1,
-  // },
-  // logoColumn: {
-  //   width: "30%",
-  //   flexDirection: "column",
-  //   // flexGrow: 6,
-  //   // borderBottomWidth: 1,
-  //   // borderRight: 1,
-  //   // borderTopWidth: 1,
-  //   // borderLeftWidth: 1,
-  //   padding: "2 5 1 5",
-  //   fontSize: 12,
-  //   fontFamily: "Helvetica-Bold",
-  // },
   titleView: {
     flexDirection: "column",
     textAlign: "center",
@@ -47,11 +21,7 @@ const styles = StyleSheet.create({
     paddingTop: "10px",
     paddingBottom: "10px",
   },
-  // reportName: {
-  //   fontSize: "12px",
-  //   paddingTop: "10px",
-  //   paddingBottom: "10px",
-  // },
+
   nuberDateView: {
     width: "120px",
   },
@@ -108,6 +78,10 @@ const styles = StyleSheet.create({
     padding: "2 5 1 5",
     fontFamily: "Helvetica-Bold",
   },
+  title: {
+    fontSize: "13px",
+    marginTop: "2px",
+  },
   dataColumn: {
     flexDirection: "column",
     // alignSelf: 'flex-start',
@@ -156,31 +130,29 @@ const styles = StyleSheet.create({
     padding: "1 5 1 5",
     // height: 20
   },
-  // pagenumber: {
-  //   position: "absolute",
-  //   // fontFamily: "Kalam",
-  //   // fontSize: 14,
-  //   textAlign: "center",
-  //   // color: "grey"
-  // },
 });
 
-const Header1500: React.FC = () => {
+const Header1500: React.FC<{
+  reportNo: String;
+  headerDate: String;
+}> = (props) => {
   return (
     <View>
       <View style={styles.container}>
         <View style={styles.logoColumn}>
           <Image style={styles.logo} src={logo} />
-          <Text>PRE-DESPATCH INSPECTION CHECKLIST</Text>
+          <Text style={styles.title}>PRE-DESPATCH INSPECTION CHECKLIST</Text>
         </View>
         <View style={styles.dataColumn}>
           <View style={styles.dataRow}>
             <Text style={styles.reportName}>REPORT NO.</Text>
-            <Text style={styles.reportValue}>TIPL/CUMMINS/132076/01</Text>
+            <Text style={styles.reportValue}>
+              TIPL/CUMMINS/{props.reportNo}
+            </Text>
           </View>
           <View style={styles.dataRow}>
             <Text style={styles.name}>DATE</Text>
-            <Text style={styles.value}>20.05.2022</Text>
+            <Text style={styles.value}>{props.headerDate}</Text>
           </View>
           <View style={styles.dataRow}>
             <Text style={styles.name}>PAGE</Text>

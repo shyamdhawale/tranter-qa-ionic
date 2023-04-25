@@ -1,17 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  IonContent,
-  IonGrid,
-  IonPage,
-  useIonAlert,
-  useIonViewWillEnter,
-  useIonLoading,
-  useIonViewWillLeave,
-  IonLoading,
-  IonInput,
-  IonButton,
-  IonRow,
-} from "@ionic/react";
+import { IonContent, IonGrid, IonPage, useIonAlert } from "@ionic/react";
 
 import { FormProvider, useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -29,6 +17,7 @@ import HydrostaticTestReportHeader2000 from "../HydrostaticReport/HydrostaticTes
 import TestParameter2000 from "../HydrostaticReport/TestParameter2000";
 import Observations2000 from "../HydrostaticReport/Observations2000";
 import ChecklistPhotoMain2000 from "../ChecklistPhotoMain2000";
+import Model2000Characteristics from "../Model2000Characteristics";
 
 interface defaultValues {
   client: String;
@@ -132,7 +121,7 @@ const ChecklistSingleEdit2000 = () => {
                       subHeader: res.data.message,
                       buttons: ["OK"],
                     });
-                    history.push("/");
+                    history.push("/list-checklist/2000");
                   } else {
                     // setIsLoading(false);
                     // setShowLoading(false);
@@ -176,11 +165,11 @@ const ChecklistSingleEdit2000 = () => {
           <form onSubmit={(e) => onSubmit(e)}>
             <IonGrid>
               <Model2000Header />
-              <Model1250Characteristics />
+              <Model2000Characteristics />
               <HydrostaticTestReportHeader2000 />
               <TestParameter2000 />
               <Observations2000 />
-              <ChecklistPhotoMain2000 reportSrNo={myData.header_mfgsrno} />
+              {/* <ChecklistPhotoMain2000 reportSrNo={myData.header_mfgsrno} /> */}
 
               <Model2000ControlEdit />
             </IonGrid>
