@@ -14,9 +14,9 @@ import ListAllChecklist1500 from "../../components/Checklist/Common/Model1500/Vi
 const ListChecklist1500: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const isLogin = authCtx.isLoggedIn;
-  if (!isLogin) {
-    return <Redirect to={{ pathname: "/login" }} />;
-  }
+  // if (!isLogin) {
+  //   return <Redirect to={{ pathname: "/login" }} />;
+  // }
 
   return (
     <>

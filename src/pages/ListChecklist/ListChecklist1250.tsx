@@ -14,9 +14,9 @@ import ListAllChecklist1250 from "../../components/Checklist/Common/Model1250/Pd
 const ListChecklist1250: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const isLogin = authCtx.isLoggedIn;
-  if (!isLogin) {
-    return <Redirect to={{ pathname: "/login" }} />;
-  }
+  // if (!isLogin) {
+  //   return <Redirect to={{ pathname: "/login" }} />;
+  // }
 
   return (
     <>

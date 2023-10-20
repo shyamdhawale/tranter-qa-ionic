@@ -14,9 +14,9 @@ import ListAllChecklist500 from "../../components/Checklist/Common/Model500/View
 const ListChecklist500: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const isLogin = authCtx.isLoggedIn;
-  if (!isLogin) {
-    return <Redirect to={{ pathname: "/login" }} />;
-  }
+  // if (!isLogin) {
+  //   return <Redirect to={{ pathname: "/login" }} />;
+  // }
 
   return (
     <>

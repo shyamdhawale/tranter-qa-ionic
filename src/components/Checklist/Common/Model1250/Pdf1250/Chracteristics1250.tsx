@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderLeftWidth: 1,
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+    // fontFamily: "Lato Bold",
     textAlign: "left",
     //  height: 13,
   },
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     // borderLeftWidth: 1,
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+    // fontFamily: "Lato Bold",
     // textAlign: "center",
     // height: 13,
   },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     // borderLeftWidth: 1,
     // textAlign: "center",
     padding: "1 5 1 5",
-    fontFamily: "Lato Bold",
+    // fontFamily: "Lato Bold",
     // height: 13,
   },
   actualresult: {
@@ -121,8 +121,8 @@ const Chracteristics1250: React.FC<props> = ({ results }) => {
         style={{
           textAlign: "center",
           fontSize: 14,
-          fontFamily: "Lato Bold",
-          fontWeight: "extrabold",
+          // fontFamily: "Lato Bold",
+          // fontWeight: "extrabold",
         }}
       >
         <Text>Pre Despatch Inspection Report1250</Text>
